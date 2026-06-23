@@ -1,7 +1,7 @@
 <div align="center">
 
-<!-- Custom Generated Cyber-Glow Banner -->
-<img src="./github_profile_banner.png" width="100%" alt="Ashis Kumar Banner" />
+<!-- Sliced Geometric Gradient Header Banner -->
+<img src="https://capsule-render.vercel.app/api?type=sliced&color=0:0d1117,50:0969da,100:1f2937&height=220&section=header&text=Ashis%20Kumar&fontSize=65&fontColor=ffffff&fontAlignY=40&desc=Full-Stack%20Web%20Developer%20%7C%20UI%20Craftsman%20%7C%20Open%20Source&descSize=18&descAlignY=62" width="100%" alt="Ashis Kumar Banner" />
 
 <br/><br/>
 
@@ -55,24 +55,16 @@
 <td width="58%" valign="top">
 
 ### 🚀 Who I Am
-I'm a passionate **Full-Stack Web Developer** and **UI Craftsman** from India 🇮🇳. I love creating premium, performant, and user-centric web applications.
+I'm a passionate **Full-Stack Web Developer** and **UI Craftsman** from India 🇮🇳. I specialize in building performant, responsive, and visually stunning web applications with modern ecosystems.
 
 - 🔭 **Current Focus:** Crafting premium web experiences and exploring scalable system designs.
 - 🎓 **Learning Journey:** Diving deep into AWS, Cloud Architecture, and Web3 technologies.
 - 💬 **Ask me about:** React, Next.js, Node.js, and CSS animations.
 - 🎨 **Design Philosophy:** Clean, responsive, and interactive design is not a luxury, it's a necessity.
 
-<br/>
-
-<!-- Interactive Developer Config Diagnostic -->
-<details>
-  <summary><b>💻 RUN ASHIS DIAGNOSTICS (Click to boot specs)</b></summary>
-  <br/>
-  
 ```typescript
 const ashis: Developer = {
   name:        "Ashis Kumar",
-  username:    "ashis2489",
   role:        "Full-Stack Web Developer",
   location:    "India 🇮🇳",
   learning:    ["System Design", "AWS", "Web3"],
@@ -81,11 +73,10 @@ const ashis: Developer = {
   motto:       "Code. Create. Contribute. Repeat. 🔁"
 };
 ```
-</details>
 
 </td>
 <td width="42%" align="center" valign="middle">
-  <img alt="Coding" width="340" src="https://cdn.dribbble.com/users/1162077/screenshots/3848914/programmer.gif" style="border-radius: 8px; box-shadow: 0px 4px 20px rgba(0, 242, 254, 0.15);" />
+  <img alt="Coding" width="340" src="https://cdn.dribbble.com/users/1162077/screenshots/3848914/programmer.gif" style="border-radius: 8px; box-shadow: 0px 4px 20px rgba(0, 242, 254, 0.1);" />
 </td>
 </tr>
 </table>
@@ -96,72 +87,13 @@ const ashis: Developer = {
 
 ## 🛠️ Tech Stack & Tools
 
-<details open>
-  <summary><b>🎨 Frontend Arsenal (Click to collapse)</b></summary>
-  <br/>
-  <p align="center">
-    <img src="https://skillicons.dev/icons?i=html,css,js,ts,react,nextjs,tailwind,redux,figma&theme=dark" />
-  </p>
-</details>
-
-<details open>
-  <summary><b>⚙️ Backend & Database gear (Click to collapse)</b></summary>
-  <br/>
-  <p align="center">
-    <img src="https://skillicons.dev/icons?i=nodejs,express,mongodb,postgres,firebase,prisma,redis&theme=dark" />
-  </p>
-</details>
-
-<details open>
-  <summary><b>🧰 Tools & Platforms (Click to collapse)</b></summary>
-  <br/>
-  <p align="center">
-    <img src="https://skillicons.dev/icons?i=git,github,docker,vercel,aws,vscode,linux,postman&theme=dark" />
-  </p>
-</details>
-
-<br/>
-
----
-
-## 📊 GitHub Analytics
-
 <div align="center">
 
-<table border="0">
-<tr>
-<td align="center" valign="top" width="50%">
-  <img height="175" src="https://github-readme-stats.vercel.app/api?username=ashis2489&show_icons=true&theme=github_dark&include_all_commits=true&count_private=true&hide_border=true&bg_color=0d1117&title_color=58a6ff&icon_color=00f2fe&text_color=c9d1d9&ring_color=0969da" alt="GitHub Stats" />
-</td>
-<td align="center" valign="top" width="50%">
-  <img height="175" src="https://github-readme-stats.vercel.app/api/top-langs/?username=ashis2489&layout=compact&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=58a6ff&text_color=c9d1d9&langs_count=8" alt="Top Languages" />
-</td>
-</tr>
-<tr>
-<td colspan="2" align="center" valign="top">
-  <br/>
-  <img src="https://streak-stats.demolab.com?user=ashis2489&theme=github-dark-blue&hide_border=true&background=0D1117&ring=00F2FE&fire=FF6B35&currStreakLabel=00F2FE&sideLabels=8B949E&dates=8B949E&stroke=0d1117" width="95%" alt="Streak Stats" />
-</td>
-</tr>
-<tr>
-<td colspan="2" align="center" valign="top">
-  <br/>
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=ashis2489&bg_color=0d1117&color=00f2fe&line=0969da&point=58a6ff&area=true&area_color=0969da&hide_border=true&custom_title=Ashis's%20Contribution%20Graph" width="100%" alt="Contribution Graph" />
-</td>
-</tr>
-</table>
-
-</div>
-
-<br/>
-
----
-
-## 🏆 GitHub Trophies
-
-<div align="center">
-
-<img src="https://github-profile-trophy.vercel.app/?username=ashis2489&theme=darkhub&no-frame=true&no-bg=true&margin-w=6&column=7&rank=SECRET,SSS,SS,S,AAA,AA,A,B" width="100%" alt="Trophies"/>
+| Area | Technologies |
+| :--- | :--- |
+| **🎨 Frontend** | <img src="https://skillicons.dev/icons?i=html,css,js,ts,react,nextjs,tailwind,redux,figma&theme=dark" /> |
+| **⚙️ Backend & Database** | <img src="https://skillicons.dev/icons?i=nodejs,express,mongodb,postgres,firebase,prisma,redis&theme=dark" /> |
+| **🛠️ DevOps & Tools** | <img src="https://skillicons.dev/icons?i=git,github,docker,vercel,aws,vscode,linux,postman&theme=dark" /> |
 
 </div>
 
@@ -206,6 +138,46 @@ const ashis: Developer = {
 
 ---
 
+## 📊 Developer Analytics & Metrics
+
+<div align="center">
+
+<table border="0">
+<tr>
+<td align="center" valign="top" width="50%">
+  <img height="175" src="https://github-readme-stats.vercel.app/api?username=ashis2489&show_icons=true&theme=github_dark&include_all_commits=true&count_private=true&hide_border=true&bg_color=0d1117&title_color=58a6ff&icon_color=00f2fe&text_color=c9d1d9&ring_color=0969da" alt="GitHub Stats" />
+</td>
+<td align="center" valign="top" width="50%">
+  <img height="175" src="https://github-readme-stats.vercel.app/api/top-langs/?username=ashis2489&layout=compact&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=58a6ff&text_color=c9d1d9&langs_count=8" alt="Top Languages" />
+</td>
+</tr>
+<tr>
+<td colspan="2" align="center" valign="top">
+  <br/>
+  <img src="https://streak-stats.demolab.com?user=ashis2489&theme=github-dark-blue&hide_border=true&background=0D1117&ring=00F2FE&fire=FF6B35&currStreakLabel=00F2FE&sideLabels=8B949E&dates=8B949E&stroke=0d1117" width="95%" alt="Streak Stats" />
+</td>
+</tr>
+<tr>
+<td colspan="2" align="center" valign="top">
+  <br/>
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=ashis2489&bg_color=0d1117&color=00f2fe&line=0969da&point=58a6ff&area=true&area_color=0969da&hide_border=true&custom_title=Ashis's%20Contribution%20Graph" width="100%" alt="Contribution Graph" />
+</td>
+</tr>
+</table>
+
+</div>
+
+<br/>
+
+### ⏱️ Weekly Coding Activity (WakaTime)
+
+<!--START_SECTION:waka-->
+<!--END_SECTION:waka-->
+
+<br/>
+
+---
+
 ## ⚡ Recent Activity
 
 <!--START_SECTION:activity-->
@@ -224,23 +196,7 @@ const ashis: Developer = {
 
 ---
 
-## 🐍 Contribution Snake
-
-<div align="center">
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ashis2489/ashis2489/output/github-contribution-grid-snake-dark.svg"/>
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/ashis2489/ashis2489/output/github-contribution-grid-snake.svg"/>
-  <img alt="Snake animation" src="https://raw.githubusercontent.com/ashis2489/ashis2489/output/github-contribution-grid-snake-dark.svg" width="800" />
-</picture>
-
-</div>
-
-<br/>
-
----
-
-## 🤝 Let's Connect & Collaborate
+## 🤝 Let's Connect
 
 <div align="center">
 

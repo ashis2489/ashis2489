@@ -306,11 +306,11 @@ graph TD
 
 <table border="0">
 <tr>
-<td valign="top" width="50%">
-  <img src="https://github-readme-stats.vercel.app/api?username=ashis2489&show_icons=true&theme=github_dark&include_all_commits=true&count_private=true&hide_border=true&bg_color=0d1117&title_color=58a6ff&icon_color=00f2fe&text_color=c9d1d9&ring_color=0969da" width="100%" alt="GitHub Stats" />
+<td align="center" valign="top" width="50%">
+  <img height="175" src="https://github-readme-stats.vercel.app/api?username=ashis2489&show_icons=true&theme=github_dark&include_all_commits=true&count_private=true&hide_border=true&bg_color=0d1117&title_color=58a6ff&icon_color=00f2fe&text_color=c9d1d9&ring_color=0969da" alt="GitHub Stats" />
 </td>
-<td valign="top" width="50%">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=ashis2489&layout=compact&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=58a6ff&text_color=c9d1d9&langs_count=8" width="100%" alt="Top Languages" />
+<td align="center" valign="top" width="50%">
+  <img height="175" src="https://github-readme-stats.vercel.app/api/top-langs/?username=ashis2489&layout=compact&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=58a6ff&text_color=c9d1d9&langs_count=8" alt="Top Languages" />
 </td>
 </tr>
 <tr>
@@ -362,26 +362,26 @@ graph TD
 
 <table border="0">
 <tr>
-<td>
+<td align="center">
   <a href="https://github.com/ashis2489/disha-for-india">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=ashis2489&repo=disha-for-india&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=58a6ff&text_color=c9d1d9&icon_color=00f2fe" alt="Disha for India" />
+    <img height="115" src="https://github-readme-stats.vercel.app/api/pin/?username=ashis2489&repo=disha-for-india&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=58a6ff&text_color=c9d1d9&icon_color=00f2fe" alt="Disha for India" />
   </a>
 </td>
-<td>
+<td align="center">
   <a href="https://github.com/ashis2489/e-education">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=ashis2489&repo=e-education&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=58a6ff&text_color=c9d1d9&icon_color=00f2fe" alt="E-Education" />
+    <img height="115" src="https://github-readme-stats.vercel.app/api/pin/?username=ashis2489&repo=e-education&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=58a6ff&text_color=c9d1d9&icon_color=00f2fe" alt="E-Education" />
   </a>
 </td>
 </tr>
 <tr>
-<td>
+<td align="center">
   <a href="https://github.com/ashis2489/task-manager">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=ashis2489&repo=task-manager&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=58a6ff&text_color=c9d1d9&icon_color=00f2fe" alt="Task Manager" />
+    <img height="115" src="https://github-readme-stats.vercel.app/api/pin/?username=ashis2489&repo=task-manager&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=58a6ff&text_color=c9d1d9&icon_color=00f2fe" alt="Task Manager" />
   </a>
 </td>
-<td>
+<td align="center">
   <a href="https://github.com/ashis2489/ecomnerce_work">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=ashis2489&repo=ecomnerce_work&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=58a6ff&text_color=c9d1d9&icon_color=00f2fe" alt="Ecommerce Work" />
+    <img height="115" src="https://github-readme-stats.vercel.app/api/pin/?username=ashis2489&repo=ecomnerce_work&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=58a6ff&text_color=c9d1d9&icon_color=00f2fe" alt="Ecommerce Work" />
   </a>
 </td>
 </tr>
@@ -397,11 +397,11 @@ graph TD
 
 <div align="center">
 
-<!-- Static snake eating contributions (auto-generated daily) -->
+<!-- Animated snake eating contributions (auto-generated daily) -->
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ashis2489/ashis2489/output/github-contribution-grid-snake-dark.svg"/>
   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/ashis2489/ashis2489/output/github-contribution-grid-snake.svg"/>
-  <img alt="Snake eating contributions" src="https://raw.githubusercontent.com/ashis2489/ashis2489/output/github-contribution-grid-snake-dark.svg" width="100%"/>
+  <img alt="Snake eating contributions" src="https://raw.githubusercontent.com/ashis2489/ashis2489/output/github-contribution-grid-snake-dark.svg" width="800" />
 </picture>
 
 <br/><br/>

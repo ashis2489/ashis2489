@@ -85,6 +85,34 @@ const ashis: Developer = {
 
 <br/>
 
+<!-- Interactive Diagnostic Terminal -->
+<details>
+  <summary><b>💻 BOOT SYSTEM DIAGNOSTICS (Click to run terminal)</b></summary>
+  <br/>
+  
+```bash
+$ npm run dev
+ready - started server on 0.0.0.0:3000, url: http://localhost:3000
+info  - loaded env from .env.local
+event - compiled client and server successfully in 321 ms (18 modules)
+
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+nothing to commit, working tree clean
+
+$ npx diagnose --user ashis2489
+[SYSTEM] Scanning capabilities...
+[PASS]   Frontend Engine: React & Next.js [Level 9/10]
+[PASS]   Backend Engine: Node.js & Express [Level 8/10]
+[PASS]   Database Integrity: MongoDB & PostgreSQL [Level 8/10]
+[PASS]   DevOps Matrix: Docker & AWS [Level 6/10]
+[SUCCESS] System fully operational. Developer is open for collaborations! 🚀
+```
+</details>
+
+<br/>
+
 ---
 
 ## 🎮 Developer RPG Card
@@ -132,34 +160,58 @@ const ashis: Developer = {
 
 ---
 
-## 🏆 Achievement Board
+## 🌳 Skill Tree & Specializations
 
-<div align="center">
+### 🌲 Equipped Classes
 
-| Badge | Achievement | Status |
-|:-----:|-------------|:------:|
-| 🌱 | **First Commit** — Pushed first code to GitHub | ![Unlocked](https://img.shields.io/badge/-UNLOCKED-3fb950?style=flat-square) |
-| 🚀 | **Launcher** — Deployed first live project | ![Unlocked](https://img.shields.io/badge/-UNLOCKED-3fb950?style=flat-square) |
-| 🎨 | **UI Craftsman** — Built 5+ responsive UIs | ![Unlocked](https://img.shields.io/badge/-UNLOCKED-3fb950?style=flat-square) |
-| ⚡ | **Speed Coder** — Completed project in under 48h | ![Unlocked](https://img.shields.io/badge/-UNLOCKED-3fb950?style=flat-square) |
-| 🌐 | **Full-Stack** — Built complete frontend + backend app | ![Unlocked](https://img.shields.io/badge/-UNLOCKED-3fb950?style=flat-square) |
-| 📦 | **Package Hoarder** — 24 public repositories | ![Unlocked](https://img.shields.io/badge/-UNLOCKED-3fb950?style=flat-square) |
-| 🤝 | **Team Player** — Collaborated on a project | ![Unlocked](https://img.shields.io/badge/-UNLOCKED-3fb950?style=flat-square) |
-| 🔁 | **Consistent** — 7-day commit streak | ![Unlocked](https://img.shields.io/badge/-UNLOCKED-3fb950?style=flat-square) |
-| 🔥 | **On Fire** — 30-day commit streak | ![In Progress](https://img.shields.io/badge/-IN_PROGRESS-0969da?style=flat-square) |
-| ⭐ | **Star Collector** — First 10 stars on a repo | ![In Progress](https://img.shields.io/badge/-IN_PROGRESS-0969da?style=flat-square) |
-| 🐙 | **Open Sourcer** — First accepted OSS PR | ![In Progress](https://img.shields.io/badge/-IN_PROGRESS-0969da?style=flat-square) |
-| 🏅 | **Century** — 100 total stars across all repos | ![Locked](https://img.shields.io/badge/-LOCKED-424b54?style=flat-square) |
-| 🌟 | **Trending** — Repo featured on GitHub Trending | ![Locked](https://img.shields.io/badge/-LOCKED-424b54?style=flat-square) |
-| 💎 | **Legend** — 1000+ GitHub followers | ![Locked](https://img.shields.io/badge/-LOCKED-424b54?style=flat-square) |
+To view detailed stats, item slots, and custom traits, expand a class loadout below:
 
-</div>
+<details>
+  <summary><b>🎨 [FRONTEND WIZARD] — LEVEL 9 — (Click to expand loadout)</b></summary>
+  <br/>
+  <blockquote>
+    <b>⚔️ Equipped Items:</b> React 18, Next.js (App Router), Tailwind CSS, Redux, Figma
+    <br/><br/>
+    <b>✨ Class Abilities:</b>
+    <ul>
+      <li><b>Optimized Hydration:</b> Decreases initial server/client mismatches.</li>
+      <li><b>Micro-Animation Magic:</b> Implements CSS keyframe animations for high user engagement.</li>
+      <li><b>Figma Translation:</b> Bridges UI designs directly into clean, modular components.</li>
+    </ul>
+  </blockquote>
+</details>
+
+<details>
+  <summary><b>⚙️ [BACKEND WARLOCK] — LEVEL 8 — (Click to expand loadout)</b></summary>
+  <br/>
+  <blockquote>
+    <b>⚔️ Equipped Items:</b> Node.js, Express, MongoDB, PostgreSQL, Prisma, Redis, REST APIs
+    <br/><br/>
+    <b>✨ Class Abilities:</b>
+    <ul>
+      <li><b>REST Gateway:</b> Configures low-latency, secure server routes.</li>
+      <li><b>Pipeline Aggregation:</b> Optimizes complex MongoDB queries for dashboard analytics.</li>
+      <li><b>Prisma Spell:</b> Auto-maps database entities into robust TypeScript models.</li>
+    </ul>
+  </blockquote>
+</details>
+
+<details>
+  <summary><b>☁️ [DEVOPS DRUID] — LEVEL 6 — (Click to expand loadout)</b></summary>
+  <br/>
+  <blockquote>
+    <b>⚔️ Equipped Items:</b> Git, GitHub Actions, Docker, Vercel, AWS (S3/EC2), Linux, Postman
+    <br/><br/>
+    <b>✨ Class Abilities:</b>
+    <ul>
+      <li><b>Container Conjuring:</b> Isolates environments inside lightweight Docker container clusters.</li>
+      <li><b>Automated Pipeline:</b> Schedules testing and building scripts automatically on commit.</li>
+      <li><b>Cloud Gateway:</b> Configures hosting on Vercel and AWS for highly responsive apps.</li>
+    </ul>
+  </blockquote>
+</details>
 
 <br/>
-
----
-
-## 🌳 Skill Tree
 
 <div align="center">
 
@@ -192,10 +244,39 @@ const ashis: Developer = {
 
 ---
 
-## 📜 Quest Board
+## 🏆 Achievements & Badges
 
 <div align="center">
 
+| Badge | Achievement | Status |
+|:-----:|-------------|:------:|
+| 🌱 | **First Commit** — Pushed first code to GitHub | ![Unlocked](https://img.shields.io/badge/-UNLOCKED-3fb950?style=flat-square) |
+| 🚀 | **Launcher** — Deployed first live project | ![Unlocked](https://img.shields.io/badge/-UNLOCKED-3fb950?style=flat-square) |
+| 🎨 | **UI Craftsman** — Built 5+ responsive UIs | ![Unlocked](https://img.shields.io/badge/-UNLOCKED-3fb950?style=flat-square) |
+| ⚡ | **Speed Coder** — Completed project in under 48h | ![Unlocked](https://img.shields.io/badge/-UNLOCKED-3fb950?style=flat-square) |
+| 🌐 | **Full-Stack** — Built complete frontend + backend app | ![Unlocked](https://img.shields.io/badge/-UNLOCKED-3fb950?style=flat-square) |
+| 📦 | **Package Hoarder** — 24 public repositories | ![Unlocked](https://img.shields.io/badge/-UNLOCKED-3fb950?style=flat-square) |
+| 🤝 | **Team Player** — Collaborated on a project | ![Unlocked](https://img.shields.io/badge/-UNLOCKED-3fb950?style=flat-square) |
+| 🔁 | **Consistent** — 7-day commit streak | ![Unlocked](https://img.shields.io/badge/-UNLOCKED-3fb950?style=flat-square) |
+| 🔥 | **On Fire** — 30-day commit streak | ![In Progress](https://img.shields.io/badge/-IN_PROGRESS-0969da?style=flat-square) |
+| ⭐ | **Star Collector** — First 10 stars on a repo | ![In Progress](https://img.shields.io/badge/-IN_PROGRESS-0969da?style=flat-square) |
+| 🐙 | **Open Sourcer** — First accepted OSS PR | ![In Progress](https://img.shields.io/badge/-IN_PROGRESS-0969da?style=flat-square) |
+| 🏅 | **Century** — 100 total stars across all repos | ![Locked](https://img.shields.io/badge/-LOCKED-424b54?style=flat-square) |
+| 🌟 | **Trending** — Repo featured on GitHub Trending | ![Locked](https://img.shields.io/badge/-LOCKED-424b54?style=flat-square) |
+| 💎 | **Legend** — 1000+ GitHub followers | ![Locked](https://img.shields.io/badge/-LOCKED-424b54?style=flat-square) |
+
+</div>
+
+<br/>
+
+---
+
+## 📜 Quest Board
+
+<details open>
+  <summary><b>⚔️ Active Main Quests (Click to Collapse)</b></summary>
+  <br/>
+  
 | Status | Quest Description | Progress |
 | :---: | :--- | :--- |
 | 🔥 | **Complete 1000 GitHub contributions** | ![78%](https://img.shields.io/badge/Progress-████████░░_78%25-00f2fe?style=flat-square) |
@@ -203,9 +284,12 @@ const ashis: Developer = {
 | 🌐 | **Launch personal portfolio v2** | ![40%](https://img.shields.io/badge/Progress-████░░░░░░_40%25-00f2fe?style=flat-square) |
 | 📦 | **Publish first npm package** | ![20%](https://img.shields.io/badge/Progress-██░░░░░░░░_20%25-0969da?style=flat-square) |
 | 🤝 | **Contribute to a major OSS project** | ![10%](https://img.shields.io/badge/Progress-█░░░░░░░░░_10%25-424b54?style=flat-square) |
+</details>
 
-<br/>
-
+<details>
+  <summary><b>✅ Completed & Locked Milestones (Click to Expand)</b></summary>
+  <br/>
+  
 ```
 ┌─────────────────────────────────────────────────────────────────┐
 │                    ✅  COMPLETED QUESTS                          │
@@ -224,8 +308,7 @@ const ashis: Developer = {
 │  🔒  Mentor a junior developer          [Requires: LVL 60]     │
 └─────────────────────────────────────────────────────────────────┘
 ```
-
-</div>
+</details>
 
 <br/>
 

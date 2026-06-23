@@ -286,14 +286,27 @@ TypeScript      Redux  Firebase               GitHub Actions
 
 <br/>
 
-## 🐍 &nbsp; Snake Eating My Contributions
+## 🐍 &nbsp; Snake — Contribution Grid & Playable Game
 
 <div align="center">
+
+<!-- Static snake eating contributions (auto-generated daily) -->
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ashis2489/ashis2489/output/github-contribution-grid-snake-dark.svg"/>
   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/ashis2489/ashis2489/output/github-contribution-grid-snake.svg"/>
-  <img alt="Snake" src="https://raw.githubusercontent.com/ashis2489/ashis2489/output/github-contribution-grid-snake-dark.svg" width="100%"/>
+  <img alt="Snake eating contributions" src="https://raw.githubusercontent.com/ashis2489/ashis2489/output/github-contribution-grid-snake-dark.svg" width="100%"/>
 </picture>
+
+<br/><br/>
+
+### 🎮 Want to play Snake yourself?
+
+<a href="https://ashis2489.vercel.app/snake">
+  <img src="https://img.shields.io/badge/▶%20PLAY%20SNAKE%20GAME-FF6B35?style=for-the-badge&logo=gamepad&logoColor=white&labelColor=0d1117" alt="Play Snake"/>
+</a>
+
+<sub>Arrow keys / WASD to move · Works on mobile too 📱</sub>
+
 </div>
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">

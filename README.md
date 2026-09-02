@@ -224,12 +224,12 @@ const ashis: Developer = {
 ## ⚡ Recent Activity
 
 <!--START_SECTION:activity-->
-<table>
-  <tr>
-    <td>
-      <p align="center">
-        <i>🔄 Feeds are automatically synced via GitHub actions. View my profile repository commits for details!</i>
-      </p>
+1. 🔒 Closed issue [#3](https://github.com/ashis2489/github-badges/issues/3) in [ashis2489/github-badges](https://github.com/ashis2489/github-badges)
+2. ℹ️ Assigned issue [#3](https://github.com/ashis2489/github-badges/issues/3) in [ashis2489/github-badges](https://github.com/ashis2489/github-badges)
+3. ℹ️ Labeled issue [#3](https://github.com/ashis2489/github-badges/issues/3) in [ashis2489/github-badges](https://github.com/ashis2489/github-badges)
+4. ❗ Opened issue [#3](https://github.com/ashis2489/github-badges/issues/3) in [ashis2489/github-badges](https://github.com/ashis2489/github-badges)
+5. 🎉 Merged PR [#2](https://github.com/ashis2489/github-badges/pull/2) in [ashis2489/github-badges](https://github.com/ashis2489/github-badges)
+6. 💪 Opened PR [#2](https://github.com/ashis2489/github-badges/pull/2) in [ashis2489/github-badges](https://github.com/ashis2489/github-badges)
     </td>
   </tr>
 </table>

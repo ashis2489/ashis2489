@@ -7,6 +7,21 @@
     <a href="https://linkedin.com/in/ashis2489"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white&labelColor=0d1117" alt="LinkedIn" /></a>
     <a href="mailto:ashis2489@gmail.com"><img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white&labelColor=0d1117" alt="Email" /></a>
   </p>
+
+  <table>
+    <tr>
+      <td width="220" align="center" valign="middle">
+        <img src="./assets/avatar-ring.svg" width="190" alt="Ashis Kumar — animated avatar" />
+      </td>
+      <td align="center" valign="middle">
+        <a href="https://github.com/ashis2489">
+          <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=22&duration=3000&pause=800&color=00F2FE&center=true&vCenter=true&width=560&height=50&lines=Building+with+React+%26+Next.js;Shipping+clean+UI+%26+solid+APIs;Exploring+AWS+%26+system+design;Open+to+work+-+say+hi" alt="Typing animation" />
+        </a>
+        <br/>
+        <img src="https://komarev.com/ghpvc/?username=ashis2489&style=for-the-badge&color=00f2fe&labelColor=0d1117&label=PROFILE+VIEWS" alt="Profile views" />
+      </td>
+    </tr>
+  </table>
 </div>
 
 ---
@@ -19,11 +34,51 @@ I build fast, good-looking web apps with **React**, **Next.js** and **Node.js** 
 - 🌱 **Learning:** AWS, cloud architecture, system design
 - 💬 **Ask me about:** React, Next.js, TypeScript, Tailwind CSS
 
+<details>
+  <summary><b>🖥️ Run <code>ashis.exe</code> — click to boot specs</b></summary>
+  <br/>
+
+```typescript
+const ashis: Developer = {
+  name:        "Ashis Kumar",
+  username:    "ashis2489",
+  role:        "Full-Stack Web Developer",
+  location:    "India 🇮🇳",
+  stack:       ["React", "Next.js", "TypeScript", "Node.js"],
+  learning:    ["System Design", "AWS", "Cloud Architecture"],
+  openTo:      ["Collaborations", "Freelance", "Full-time"],
+  funFact:     "I debug with console.log and I'm not ashamed 🙈",
+  motto:       "Code. Create. Contribute. Repeat. ⚡"
+};
+```
+
+</details>
+
 ### Tech stack
 
-<p align="center">
-  <img src="https://skillicons.dev/icons?i=html,css,js,ts,react,nextjs,tailwind,redux,figma,nodejs,express,mongodb,postgres,prisma,firebase,git,docker,vercel,aws,vscode&theme=dark" alt="Tech stack" />
-</p>
+<details open>
+  <summary><b>🎨 Frontend</b></summary>
+  <br/>
+  <p align="center">
+    <img src="https://skillicons.dev/icons?i=html,css,js,ts,react,nextjs,tailwind,redux,figma&theme=dark" alt="Frontend stack" />
+  </p>
+</details>
+
+<details open>
+  <summary><b>⚙️ Backend &amp; database</b></summary>
+  <br/>
+  <p align="center">
+    <img src="https://skillicons.dev/icons?i=nodejs,express,mongodb,postgres,prisma,firebase&theme=dark" alt="Backend stack" />
+  </p>
+</details>
+
+<details open>
+  <summary><b>🛠️ Tools &amp; platforms</b></summary>
+  <br/>
+  <p align="center">
+    <img src="https://skillicons.dev/icons?i=git,docker,vercel,aws,vscode&theme=dark" alt="Tools stack" />
+  </p>
+</details>
 
 ### Featured projects
 

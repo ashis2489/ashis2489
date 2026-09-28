@@ -134,5 +134,3 @@ const ashis: Developer = {
 <div align="center">
   <sub>Built by <a href="https://github.com/ashis2489"><b>Ashis Kumar</b></a> — open to interesting projects, so say hi 👋</sub>
 </div>
-
-<table><tr><td bgcolor="#0d1117" width="200" height="60" valign="middle" align="center"><b style="color:#58a6ff">PROBE-COLOR</b></td></tr></table>

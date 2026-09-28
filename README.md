@@ -2,7 +2,6 @@
   <img src="./github_profile_banner.png" width="100%" alt="Ashis Kumar — Full-Stack Web Developer" />
 
   <p>
-    <a href="https://ashis2489.vercel.app"><img src="https://img.shields.io/badge/Portfolio-ashis2489.vercel.app-4facfe?style=for-the-badge&logo=vercel&logoColor=white&labelColor=0d1117" alt="Portfolio" /></a>
     <img src="https://img.shields.io/badge/Status-Open%20to%20Work-3fb950?style=for-the-badge&labelColor=0d1117" alt="Open to work" />
     <a href="https://linkedin.com/in/ashis2489"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white&labelColor=0d1117" alt="LinkedIn" /></a>
     <a href="mailto:ashis2489@gmail.com"><img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white&labelColor=0d1117" alt="Email" /></a>
@@ -85,9 +84,6 @@ const ashis: Developer = {
 | Project | Stack | What it is |
 |---------|-------|------------|
 | **[teen-helpline](https://github.com/ashis2489/teen-helpline)** | Next.js · Prisma · TypeScript | Teen mental-health platform — counselling booking, journal, mood tracking, community |
-| **Disha for India** | Next.js · Supabase | Safe space for teens and families — guidance, counselling, resources |
-| **Nirogitanman** | React · Vite | Premium Ayurvedic brand digital experience |
-| **Campus Delivery** | React · Django · Tailwind | Food ordering built for university campuses, hostels and academic blocks |
 
 ### Latest projects
 
@@ -101,11 +97,10 @@ const ashis: Developer = {
 - [tasky-manger](https://github.com/ashis2489/tasky-manger)
 <!--PROJECTS:END-->
 
-### GitHub stats
+### Contribution streak
 
 <div align="center">
-  <img height="165" src="https://github-readme-stats.vercel.app/api?username=ashis2489&show_icons=true&theme=github_dark&include_all_commits=true&count_private=true&hide_border=true&bg_color=0d1117&title_color=58a6ff&icon_color=00f2fe&text_color=c9d1d9&ring_color=0969da" alt="GitHub stats" />
-  <img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=ashis2489&layout=compact&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=58a6ff&text_color=c9d1d9&langs_count=8" alt="Top languages" />
+  <img src="https://streak-stats.demolab.com?user=ashis2489&theme=github-dark-blue&hide_border=true&background=0D1117&ring=00F2FE&fire=FF6B35&currStreakLabel=00F2FE&sideLabels=8B949E&dates=8B949E&stroke=0d1117" width="95%" alt="GitHub contribution streak" />
 </div>
 
 ### Contribution snake

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 315 148" width="315" height="148">
+<style></style>
+<rect x="0.5" y="0.5" width="314" height="147" rx="12" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+  <rect x="16" y="16" width="34" height="34" rx="9" fill="#3178C6"/>
+  <text x="33" y="39" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="17" fill="#ffffff" font-weight="800" text-anchor="middle" font-style="normal">T</text>
+  <text x="60" y="32" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13.5" fill="#ffffff" font-weight="800" text-anchor="start" font-style="normal">Teen Helpline</text>
+  <text x="60" y="47" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="9" fill="#8b949e" font-weight="400" text-anchor="start" font-style="normal">github.com/ashis2489</text>
+  <text x="16" y="74" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="10.5" fill="#8b949e" font-weight="400" text-anchor="start" font-style="normal">Mental wellness platform — counselling</text>
+  <text x="16" y="88" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="10.5" fill="#8b949e" font-weight="400" text-anchor="start" font-style="normal">booking, journal, mood tracking &amp; community.</text>
+  <rect x="16" y="108" width="53.800000000000004" height="18" rx="9" fill="#21262d"/>
+  <text x="42.900000000000006" y="121" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="9" fill="#c9d1d9" font-weight="400" text-anchor="middle" font-style="normal">Next.js</text>
+  <rect x="75.80000000000001" y="108" width="48.400000000000006" height="18" rx="9" fill="#21262d"/>
+  <text x="100.00000000000001" y="121" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="9" fill="#c9d1d9" font-weight="400" text-anchor="middle" font-style="normal">Prisma</text>
+  <rect x="130.20000000000002" y="108" width="70.0" height="18" rx="9" fill="#21262d"/>
+  <text x="165.20000000000002" y="121" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="9" fill="#c9d1d9" font-weight="400" text-anchor="middle" font-style="normal">TypeScript</text>
+  <text x="299" y="121" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="10.5" fill="#58a6ff" font-weight="700" text-anchor="end" font-style="normal">Repo →</text>
+</svg>

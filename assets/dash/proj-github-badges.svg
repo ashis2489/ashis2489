@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 315 148" width="315" height="148">
+<style></style>
+<rect x="0.5" y="0.5" width="314" height="147" rx="12" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+  <rect x="16" y="16" width="34" height="34" rx="9" fill="#8B5CF6"/>
+  <text x="33" y="39" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="17" fill="#ffffff" font-weight="800" text-anchor="middle" font-style="normal">B</text>
+  <text x="60" y="32" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13.5" fill="#ffffff" font-weight="800" text-anchor="start" font-style="normal">GitHub Badges</text>
+  <text x="60" y="47" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="9" fill="#8b949e" font-weight="400" text-anchor="start" font-style="normal">github.com/ashis2489</text>
+  <text x="16" y="74" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="10.5" fill="#8b949e" font-weight="400" text-anchor="start" font-style="normal">Profile badges and README widget collection.</text>
+  <rect x="16" y="108" width="59.2" height="18" rx="9" fill="#21262d"/>
+  <text x="45.6" y="121" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="9" fill="#c9d1d9" font-weight="400" text-anchor="middle" font-style="normal">Markdown</text>
+  <rect x="81.2" y="108" width="48.400000000000006" height="18" rx="9" fill="#21262d"/>
+  <text x="105.4" y="121" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="9" fill="#c9d1d9" font-weight="400" text-anchor="middle" font-style="normal">Badges</text>
+  <text x="299" y="121" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="10.5" fill="#58a6ff" font-weight="700" text-anchor="end" font-style="normal">Repo →</text>
+</svg>

@@ -1,10 +1,11 @@
 <p align="center">
-  <img src="./assets/page.svg" width="100%" alt="Ashis Kumar — Full-Stack Developer dashboard: stats, tech stack, featured projects, contributions, achievements and contact" />
+  <img src="./assets/page.svg" width="100%" alt="Ashish Vibhor — Full-Stack Developer dashboard: stats, tech stack, featured projects, contributions, achievements and contact" />
 </p>
 
 <div align="center">
   <a href="https://github.com/ashis2489"><img src="https://img.shields.io/badge/Follow-%40ashis2489-0969da?style=for-the-badge&logo=github&logoColor=white&labelColor=0d1117" alt="Follow @ashis2489" /></a>
-  <a href="https://linkedin.com/in/ashis2489"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white&labelColor=0d1117" alt="LinkedIn" /></a>
+  <a href="https://linkedin.com/in/ashish-vibhor-506a1a28a"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white&labelColor=0d1117" alt="LinkedIn" /></a>
+  <a href="https://leetcode.com/u/2301301008/"><img src="https://img.shields.io/badge/LeetCode-182%20Solved-FFA116?style=for-the-badge&logo=leetcode&logoColor=white&labelColor=0d1117" alt="LeetCode — 182 solved" /></a>
   <a href="mailto:ashis2489@gmail.com"><img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white&labelColor=0d1117" alt="Email" /></a>
   <img src="https://komarev.com/ghpvc/?username=ashis2489&style=for-the-badge&color=00f2fe&labelColor=0d1117&label=PROFILE+VIEWS" alt="Profile views" />
 </div>
@@ -15,8 +16,9 @@
 
 ```typescript
 const ashis: Developer = {
-  name:        "Ashis Kumar",
+  name:        "Ashish Vibhor",
   username:    "ashis2489",
+  leetcode:    "2301301008",
   role:        "Full-Stack Web Developer",
   location:    "India 🇮🇳",
   stack:       ["React", "Next.js", "TypeScript", "Node.js"],

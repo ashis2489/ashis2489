@@ -9,6 +9,8 @@ import subprocess
 import urllib.request
 
 OWNER = "ashis2489"
+LC_USER = "2301301008"
+LINKEDIN = "ashish-vibhor-506a1a28a"
 OUT = pathlib.Path("assets")
 PAGE_SVG = OUT / "page.svg"
 FONT = "Inter, 'Segoe UI', Helvetica, Arial, sans-serif"
@@ -25,6 +27,9 @@ MU = "#8b949e"
 ACC = "#58a6ff"
 CY = "#22d3ee"
 GREEN = "#3fb950"
+LC = "#ffa116"
+
+KW, FN, KEY, STR, PUN = "#ff7b72", "#79c0ff", "#d2a8ff", "#a5d6ff", "#c9d1d9"
 
 W = 1000
 M = 22
@@ -43,8 +48,10 @@ def gh(*args, tries=4):
         time.sleep(20 * (attempt + 1))
 
 
-def fetch(url):
-    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+def fetch(url, data=None, headers=None):
+    hdr = {"User-Agent": "Mozilla/5.0", "Content-Type": "application/json"}
+    hdr.update(headers or {})
+    req = urllib.request.Request(url, data=data, headers=hdr)
     return urllib.request.urlopen(req, timeout=30).read()
 
 
@@ -118,7 +125,7 @@ def pill(x, y, w, h, label, dot=False, size=11, fill=CARD2, stroke=BORDER,
     return body
 
 
-def heading(y, label, emoji=None, chip=None):
+def heading(y, label, emoji=None, sub=None):
     parts = []
     x = M
     if emoji:
@@ -127,121 +134,205 @@ def heading(y, label, emoji=None, chip=None):
     parts.append(text(x, y, label, size=20, fill=H, weight="800"))
     lx = x + len(label) * 11 + 12
     parts.append(rect(lx, y - 8, 26, 3, ACC, rx=1.5))
-    if chip:
-        cw = len(chip) * 6.6 + 26
-        parts.append(pill(W - M - cw, y - 17, cw, 26, chip, size=11, fill=CARD2,
-                          tcolor=ACC, weight="600"))
+    if sub:
+        parts.append(text(M, y + 20, sub, size=11.5, fill=MU))
     return "\n".join(parts)
 
 
-def build_nav(gh_icon):
+def hexpath(cx, cy, r):
+    dx = r * 0.866
+    pts = [(cx, cy - r), (cx + dx, cy - r / 2), (cx + dx, cy + r / 2),
+           (cx, cy + r), (cx - dx, cy + r / 2), (cx - dx, cy - r / 2)]
+    return "M " + " L ".join(f"{px:.1f} {py:.1f}" for px, py in pts) + " Z"
+
+
+def scene_defs():
+    return ('<defs>'
+            '<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">'
+            '<stop offset="0" stop-color="#141132"/>'
+            '<stop offset="0.45" stop-color="#3a2a66"/>'
+            '<stop offset="0.72" stop-color="#7c4680"/>'
+            '<stop offset="0.9" stop-color="#c2657e"/>'
+            '<stop offset="1" stop-color="#e29168"/></linearGradient>'
+            '<linearGradient id="heroG" x1="0" y1="0" x2="1" y2="0">'
+            '<stop offset="0" stop-color="#a78bfa"/>'
+            '<stop offset="0.55" stop-color="#7c9cff"/>'
+            '<stop offset="1" stop-color="#22d3ee"/></linearGradient>'
+            '<linearGradient id="fade" x1="0" y1="0" x2="1" y2="0">'
+            '<stop offset="0" stop-color="#0a0e15" stop-opacity="0.93"/>'
+            '<stop offset="0.6" stop-color="#0a0e15" stop-opacity="0.35"/>'
+            '<stop offset="1" stop-color="#0a0e15" stop-opacity="0.05"/></linearGradient>'
+            '<linearGradient id="btn" x1="0" y1="0" x2="1" y2="0">'
+            '<stop offset="0" stop-color="#7c5cff"/>'
+            '<stop offset="1" stop-color="#4d8dff"/></linearGradient>'
+            '<linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">'
+            '<stop offset="0" stop-color="#a78bfa"/>'
+            '<stop offset="1" stop-color="#22d3ee"/></linearGradient>'
+            '<linearGradient id="qsky" x1="0" y1="0" x2="0" y2="1">'
+            '<stop offset="0" stop-color="#1b1638"/>'
+            '<stop offset="1" stop-color="#4b2f6e"/></linearGradient>'
+            '</defs>')
+
+
+def city_scape(y_top, y_base, seed, fill, win="#ffd47e", wmin=26, wmax=70,
+               hmin=30, hmax=110):
+    rnd = random.Random(seed)
+    parts = []
+    x = -10
+    while x < W + 10:
+        bw = rnd.uniform(wmin, wmax)
+        bh = rnd.uniform(hmin, hmax)
+        top = y_base - bh
+        if top < y_top:
+            top = y_top
+        parts.append(rect(x, top, bw, y_base - top, fill))
+        wy = top + 8
+        while wy < y_base - 12:
+            wx = x + 5
+            while wx < x + bw - 8:
+                if rnd.random() < 0.35:
+                    parts.append(rect(wx, wy, 4, 5, win,
+                                      opacity=f"{rnd.uniform(0.25, 0.9):.2f}"))
+                wx += 9
+            wy += 13
+        x += bw + rnd.uniform(2, 8)
+    return "".join(parts)
+
+
+def build_nav(gh_icon, li_box):
     hgt = 54
     parts = [rect(0, 0, W, hgt, "#0b111c")]
-    parts.append(icon_img(gh_icon, M, 14, 26))
-    tabs = ["Overview", "Projects", "Stats", "Achievements", "Contact"]
-    x = M + 46
+    parts.append(rect(M, 12, 30, 30, "#161e2b", rx=8, stroke=BORDER))
+    parts.append(text(M + 15, 33, ">_", size=13, fill=CY, weight="800",
+                      anchor="middle", family=MONO))
+    parts.append(text(M + 40, 33, "ASHISH", size=15, fill=H, weight="800"))
+    tabs = ["Home", "About", "Projects", "Skills", "Stats", "Achievements", "Contact"]
+    x = M + 130
     for i, t in enumerate(tabs):
         active = i == 0
-        parts.append(text(x, 33, t, size=13, fill=H if active else MU,
+        parts.append(text(x, 33, t, size=12.5, fill=H if active else MU,
                           weight="700" if active else "500"))
-        tw = len(t) * 7.2
+        tw = len(t) * 6.8
         if active:
             parts.append(rect(x, 50, tw, 3, CY, rx=1.5))
-        x += tw + 26
-    sx = W - M - 250
-    parts.append(rect(sx, 12, 250, 30, "#0d141f", rx=8, stroke=BORDER))
-    parts.append(text(sx + 14, 31, "Search my work...", size=12, fill=MU))
-    parts.append(rect(sx + 224, 17, 20, 20, "#161e2b", rx=5, stroke=BORDER))
-    parts.append(text(sx + 234, 31, "/", size=11, fill=MU, anchor="middle"))
+        x += tw + 20
+    sx = W - M - 262
+    parts.append(rect(sx, 12, 160, 30, "#0d141f", rx=8, stroke=BORDER))
+    parts.append(text(sx + 14, 31, "Search repositories...", size=11.5, fill=MU))
+    parts.append(rect(sx + 170, 12, 30, 30, "#0d141f", rx=8, stroke=BORDER))
+    parts.append(icon_img(gh_icon, sx + 177, 19, 16))
+    parts.append(rect(sx + 206, 12, 30, 30, "#0d141f", rx=8, stroke=BORDER))
+    parts.append(li_box(sx + 213, 19))
+    for i, c in enumerate([LC, ACC, "#a78bfa"]):
+        parts.append(f'<circle cx="{sx + 250}" cy="{20 + i * 7}" r="3" fill="{c}"/>')
     parts.append(f'<line x1="0" y1="{hgt}" x2="{W}" y2="{hgt}" stroke="{BORDER}"/>')
     return hgt, "\n".join(parts)
 
 
 def build_hero(icons):
-    hgt = 404
-    y0 = 54
-    horizon = y0 + 340
-    rnd = random.Random(11)
-    stars = "".join(
-        f'<circle cx="{rnd.uniform(360, W):.1f}" cy="{rnd.uniform(y0 + 6, y0 + 300):.1f}" '
-        f'r="{rnd.uniform(0.4, 1.5):.1f}" fill="#dbe4ff" '
-        f'opacity="{rnd.uniform(0.15, 0.75):.2f}"/>' for _ in range(80))
+    hgt = 330
+    y0 = 0
     parts = [rect(0, y0, W, hgt, PAGE)]
-    parts.append('<defs><linearGradient id="sky2" x1="0" y1="0" x2="1" y2="1">'
-                 '<stop offset="0" stop-color="#0c1524"/>'
-                 '<stop offset="1" stop-color="#0a0e15"/></linearGradient>'
-                 '<linearGradient id="heroG" x1="0" y1="0" x2="1" y2="0">'
-                 '<stop offset="0" stop-color="#a78bfa"/>'
-                 '<stop offset="0.55" stop-color="#7c9cff"/>'
-                 '<stop offset="1" stop-color="#22d3ee"/></linearGradient>'
-                 '<radialGradient id="moonglow">'
-                 '<stop offset="0" stop-color="#f5f5dc" stop-opacity="0.5"/>'
-                 '<stop offset="1" stop-color="#f5f5dc" stop-opacity="0"/></radialGradient>'
-                 '</defs>')
-    parts.append(rect(340, y0, 660, 340, "url(#sky2)", rx=16))
-    parts.append(stars)
-    parts.append(f'<circle cx="900" cy="{y0 + 56}" r="46" fill="url(#moonglow)"/>'
-                 f'<circle cx="900" cy="{y0 + 56}" r="23" fill="#f2f0da"/>')
-    parts.append(f'<path d="M340 {horizon} L470 {horizon - 96} L560 {horizon - 34} '
-                 f'L660 {horizon - 118} L790 {horizon - 30} L900 {horizon - 84} '
-                 f'L1000 {horizon - 16} L1000 {horizon} Z" fill="#132036"/>')
-    parts.append(f'<path d="M340 {horizon} L445 {horizon - 54} L540 {horizon - 12} '
-                 f'L640 {horizon - 66} L760 {horizon - 20} L880 {horizon - 58} '
-                 f'L1000 {horizon - 8} L1000 {horizon} Z" fill="#0b1320"/>')
-    for lx, ly in [(505, horizon - 40), (612, horizon - 52), (742, horizon - 30),
-                   (866, horizon - 44)]:
-        parts.append(f'<circle cx="{lx}" cy="{ly}" r="2" fill="#ffd47e" opacity="0.9"/>')
-    parts.append(rect(M, y0 + 16, 660, 360, CARD, rx=16, stroke=BORDER))
-    parts.append(text(M + 26, y0 + 52, "Hey, I'm", size=15, fill=MU, family=MONO))
-    parts.append(text(M + 24, y0 + 116, "ASHIS", size=62, fill="url(#heroG)", weight="800"))
-    parts.append(f'<text x="{M + 26}" y="{y0 + 152}" font-family="{FONT}" font-size="18" '
+    parts.append(scene_defs())
+    parts.append(rect(0, y0, W, hgt, "url(#sky)"))
+    rnd = random.Random(7)
+    for _ in range(55):
+        parts.append(f'<circle cx="{rnd.uniform(0, W):.1f}" '
+                     f'cy="{rnd.uniform(y0 + 4, y0 + 120):.1f}" '
+                     f'r="{rnd.uniform(0.4, 1.3):.1f}" fill="#dbe4ff" '
+                     f'opacity="{rnd.uniform(0.15, 0.7):.2f}"/>')
+    parts.append(city_scape(y0 + 120, y0 + 252, 21, "#241c4a", hmin=40, hmax=110))
+    parts.append(city_scape(y0 + 170, y0 + 262, 5, "#171136", hmin=34, hmax=92))
+    parts.append(rect(0, y0 + 258, W, hgt - 204, "#0c0918"))
+    parts.append(rect(540, y0 + 258, 410, 10, "#1b1630"))
+    parts.append(rect(556, y0 + 268, 8, 52, "#15112a"))
+    parts.append(rect(916, y0 + 268, 8, 52, "#15112a"))
+    for mx, my, mw, mh, seed in [(560, y0 + 178, 160, 78, 3), (734, y0 + 172, 176, 86, 9)]:
+        parts.append(rect(mx, my, mw, mh, "#0e1526", rx=6, stroke="#2b3a55", sw=2))
+        parts.append(rect(mx + 8, my + 8, mw - 16, mh - 16, "#111f3a", rx=3))
+        rr = random.Random(seed)
+        ly = my + 16
+        while ly < my + mh - 18:
+            lw = rr.uniform(30, mw - 40)
+            col = [ACC, "#a78bfa", GREEN, "#f778ba", STR][rr.randrange(5)]
+            parts.append(rect(mx + 16, ly, lw, 4, col, rx=2,
+                              opacity=f"{rr.uniform(0.5, 0.95):.2f}"))
+            ly += 11
+    parts.append(rect(612, y0 + 268, 120, 9, "#241d38", rx=4))
+    parts.append(rect(862, y0 + 196, 54, 72, "#120e22", rx=14))
+    parts.append(f'<ellipse cx="856" cy="{y0 + 250}" rx="36" ry="28" fill="#0e0b1c"/>')
+    parts.append(f'<circle cx="846" cy="{y0 + 210}" r="19" fill="#0e0b1c"/>')
+    parts.append(f'<path d="M 830 {y0 + 200} q 16 -14 32 -2 q -8 -8 -18 -6 '
+                 f'q -8 2 -14 8 Z" fill="#070510"/>')
+    parts.append(rect(0, y0, W, hgt, "url(#fade)"))
+    for i, line in enumerate(["Code.", "Create.", "Contribute.", "Repeat."]):
+        ry = y0 + 66 + i * 27
+        parts.append(text(974, ry, line, size=21, fill="#e8ddf7", family=SCRIPT,
+                          anchor="end", transform=f"rotate(-8 974 {ry})"))
+    cx0, cy0 = 716, y0 + 232
+    parts.append(rect(cx0, cy0, 248, 84, "#0b101c", rx=10, stroke=BORDER))
+    parts.append(rect(cx0 + 12, cy0 + 12, 7, 7, "#ff5f56", rx=3.5))
+    parts.append(rect(cx0 + 24, cy0 + 12, 7, 7, "#ffbd2e", rx=3.5))
+    parts.append(rect(cx0 + 36, cy0 + 12, 7, 7, "#27c93f", rx=3.5))
+    code = [([("while ", KW),("(learning)", FN),(" {", PUN)]),
+            ([("  keepBuilding", FN),("();", PUN)]),
+            ([("  keepGrowing", FN),("();", PUN)]),
+            ([("  makeItBetter", FN),("();", PUN)]),
+            ([("}", PUN)])]
+    for i, ln in enumerate(code):
+        spans = "".join(f'<tspan fill="{c}">{esc(t)}</tspan>' for t, c in ln)
+        parts.append(f'<text x="{cx0 + 16}" y="{cy0 + 40 + i * 13}" '
+                     f'font-family="{MONO}" font-size="10.5">{spans}</text>')
+    parts.append(text(M + 4, y0 + 62, "Hey, I'm", size=16, fill="#d8e2f2",
+                      family=MONO, weight="600"))
+    parts.append(text(M + 2, y0 + 134, "ASHISH", size=66, fill="url(#heroG)",
+                      weight="800"))
+    parts.append(f'<text x="{M + 4}" y="{y0 + 170}" font-family="{FONT}" font-size="18" '
                  f'font-weight="700" fill="{H}">Full-Stack Developer '
                  f'<tspan fill="{CY}">| Software Engineer</tspan></text>')
-    parts.append(text(M + 26, y0 + 182, "I build scalable web applications and turn ideas",
-                      size=13, fill=MU))
-    parts.append(text(M + 26, y0 + 202, "into real-world products — UI, API and deploy.",
-                      size=13, fill=MU))
-    px = M + 26
-    for label, w in [("Open to Opportunities", 176), ("Based in India", 128),
-                     ("React · Next.js · Node.js", 186), ("TypeScript", 96)]:
-        parts.append(pill(px, y0 + 222, w, 28, label, dot=label.startswith("Open"),
-                          size=11.5))
-        px += w + 10
-    sx = M + 26
-    for slug, label in [("github", "GitHub"), ("linkedin", "LinkedIn"), ("gmail", "Email")]:
-        parts.append(rect(sx, y0 + 266, 44, 44, CARD2, rx=12, stroke=BORDER))
-        if slug in icons:
-            parts.append(icon_img(icons[slug], sx + 11, y0 + 277, 22))
-        else:
-            parts.append(text(sx + 22, y0 + 296, "in", size=17, fill=H, weight="800",
-                              anchor="middle"))
-        parts.append(text(sx + 22, y0 + 330, label, size=10.5, fill=MU, anchor="middle"))
-        sx += 66
-    for i, line in enumerate(["Code.", "Create.", "Contribute.", "Repeat."]):
-        ry = y0 + 170 + i * 30
-        parts.append(text(700, ry, line, size=22, fill="#9fb0c9", family=SCRIPT,
-                          transform=f"rotate(-8 700 {ry})"))
+    parts.append(text(M + 4, y0 + 200,
+                      "I build scalable web applications, solve real-world problems,",
+                      size=13, fill="#c5cede"))
+    parts.append(text(M + 4, y0 + 220,
+                      "and turn ideas into meaningful digital products.",
+                      size=13, fill="#c5cede"))
+    bx = M + 4
+    parts.append(rect(bx, y0 + 246, 178, 44, "url(#btn)", rx=10))
+    parts.append(text(bx + 89, y0 + 274, "Explore My Work →", size=14, fill="#ffffff",
+                      weight="700", anchor="middle"))
+    bx += 190
+    parts.append(rect(bx, y0 + 246, 148, 44, "#101725", rx=10, stroke="#3a465c"))
+    parts.append(icon_img(icons["github"], bx + 16, y0 + 257, 22))
+    parts.append(text(bx + 46, y0 + 274, "View GitHub", size=13.5, fill=T,
+                      weight="600"))
+    bx += 160
+    parts.append(rect(bx, y0 + 246, 152, 44, "#101725", rx=10, stroke="#3a465c"))
+    parts.append(text(bx + 76, y0 + 274, "✈  Let's Connect", size=13.5, fill=T,
+                      weight="600", anchor="middle"))
     return hgt, "\n".join(parts)
 
 
-def build_tiles():
-    hgt = 104
+def build_strip():
+    hgt = 76
     tiles = [
-        ("calendar", "389", "Contributions (Year)"),
+        ("cal", "389", "GitHub Contributions"),
         ("repo", "27", "Public Repositories"),
         ("box", "4", "Featured Projects"),
-        ("git-pull", "4", "Pull Requests"),
-        ("spark", "Open", "To Work — Available"),
+        ("lc", "182", "LeetCode Solved"),
     ]
-    tw = (CW - 4 * 14) / 5
-    parts = []
+    parts = [rect(0, 0, W, hgt, "#0c1119"),
+             f'<line x1="0" y1="0" x2="{W}" y2="0" stroke="{BORDER}"/>',
+             f'<line x1="0" y1="{hgt - 1}" x2="{W}" y2="{hgt - 1}" stroke="{BORDER}"/>']
+    cw = CW / 4
     for i, (kind, value, label) in enumerate(tiles):
-        x = M + i * (tw + 14)
-        parts.append(card(x, 0, tw, hgt, rx=12))
-        accent = GREEN if kind == "spark" else [ACC, "#a78bfa", CY, "#f778ba", GREEN][i]
-        parts.append(rect(x + 14, 22, 44, 44, "#161e2b", rx=10, stroke=BORDER))
-        gx, gy = x + 36, 44
-        if kind == "calendar":
+        x = M + i * cw
+        if i:
+            parts.append(f'<line x1="{x:.0f}" y1="16" x2="{x:.0f}" y2="{hgt - 16}" '
+                         f'stroke="{BORDER}"/>')
+        accent = [ACC, "#a78bfa", CY, LC][i]
+        parts.append(rect(x + 26, 18, 40, 40, "#161e2b", rx=10, stroke=BORDER))
+        gx, gy = x + 46, 38
+        if kind == "cal":
             parts.append(rect(gx - 9, gy - 8, 18, 16, "none", rx=3, stroke=accent, sw=2))
             parts.append(rect(gx - 9, gy - 12, 18, 6, "none", rx=2, stroke=accent, sw=2))
         elif kind == "repo":
@@ -251,151 +342,206 @@ def build_tiles():
             parts.append(f'<path d="M {gx} {gy - 10} L {gx + 10} {gy - 4} L {gx + 10} {gy + 6} '
                          f'L {gx} {gy + 12} L {gx - 10} {gy + 6} L {gx - 10} {gy - 4} Z" '
                          f'fill="none" stroke="{accent}" stroke-width="2"/>')
-        elif kind == "git-pull":
-            parts.append(f'<circle cx="{gx - 4}" cy="{gy - 7}" r="3.5" fill="none" '
-                         f'stroke="{accent}" stroke-width="2"/>'
-                         f'<circle cx="{gx - 4}" cy="{gy + 9}" r="3.5" fill="none" '
-                         f'stroke="{accent}" stroke-width="2"/>'
-                         f'<path d="M {gx - 4} {gy - 3} L {gx - 4} {gy + 5} M {gx + 4} {gy + 9} '
-                         f'L {gx + 9} {gy + 9} L {gx + 9} {gy - 7} L {gx + 4} {gy - 7}" '
-                         f'fill="none" stroke="{accent}" stroke-width="2"/>')
         else:
-            parts.append(f'<path d="M {gx} {gy - 11} L {gx + 3} {gy - 2} L {gx + 12} {gy} '
-                         f'L {gx + 3} {gy + 3} L {gx} {gy + 12} L {gx - 3} {gy + 3} '
-                         f'L {gx - 12} {gy} L {gx - 3} {gy - 2} Z" fill="{accent}"/>')
-        parts.append(text(x + 72, 48, value, size=21, fill=H, weight="800"))
-        parts.append(text(x + 72, 68, label, size=10, fill=MU))
+            parts.append(f'<path d="M {gx + 3} {gy - 8} L {gx - 5} {gy} L {gx + 3} {gy + 8}" '
+                         f'fill="none" stroke="{accent}" stroke-width="2" '
+                         f'stroke-linecap="round" stroke-linejoin="round"/>'
+                         f'<path d="M {gx - 3} {gy - 8} L {gx + 5} {gy} L {gx - 3} {gy + 8}" '
+                         f'fill="none" stroke="{accent}" stroke-width="2" '
+                         f'stroke-linecap="round" stroke-linejoin="round"/>')
+        parts.append(text(x + 80, 40, value, size=20, fill=H, weight="800"))
+        parts.append(text(x + 80, 58, label, size=10.5, fill=MU))
     return hgt, "\n".join(parts)
 
 
-def build_about():
-    hgt = 320
+def build_about(avatar_b64):
+    hgt = 250
     parts = [heading(26, "About Me", emoji="👤")]
-    left_w = 596
+    lw = 560
     y = 48
-    para = ("I'm a full-stack web developer from India, passionate about building impactful "
-            "products, solving real-world problems and continuously learning. I love working "
-            "on full-stack development, exploring new technologies and turning ideas into "
-            "scalable web applications.")
-    for line in wrap(para, 92):
-        parts.append(text(M, y, line, size=13.5, fill=T))
-        y += 21
-    y += 14
-    minis = [("Design", "Craft", "Clean, responsive UI that feels right."),
-             ("Build", "</>", "From idea to deployment, end to end."),
-             ("Learn", "Always", "New tech, better patterns, every week.")]
-    mw = (left_w - 2 * 12) / 3
-    for i, (title, tag, desc) in enumerate(minis):
-        x = M + i * (mw + 12)
-        parts.append(card(x, y, mw, 104, rx=12, fill=CARD2))
-        parts.append(rect(x + 14, y + 14, 30, 30, "#161e2b", rx=8, stroke=BORDER))
-        parts.append(text(x + 29, y + 34, ["✦", "</>", "◈"][i], size=13, fill=CY,
-                          anchor="middle", family=MONO))
-        parts.append(text(x + 54, y + 27, title, size=13, fill=H, weight="800"))
-        parts.append(text(x + 54, y + 43, tag, size=10.5, fill=ACC, weight="600"))
-        for j, line in enumerate(wrap(desc, 26)[:2]):
-            parts.append(text(x + 14, y + 66 + j * 15, line, size=10.5, fill=MU))
-    rx0 = M + left_w + 16
-    rw = CW - left_w - 16
-    parts.append(card(rx0, 48, rw, hgt - 48, rx=14))
-    rows = [
-        ("📍", "Location", ["India"]),
-        ("🎯", "Interests", ["Web Development, UI/UX, Open Source,", "System Design"]),
-        ("⚡", "Currently", ["Building real-world projects &",
-                             "exploring new opportunities"]),
-        ("🤝", "Open to", ["Full-time roles, Freelance, Collaborations"]),
+    parts.append(card(M, y, lw, 190, rx=14))
+    parts.append(f'<clipPath id="avclip"><circle cx="{M + 90}" cy="{y + 80}" r="50"/>'
+                 f'</clipPath>')
+    parts.append(f'<circle cx="{M + 90}" cy="{y + 80}" r="54" fill="none" '
+                 f'stroke="url(#ring)" stroke-width="3"/>')
+    parts.append(f'<image href="data:image/png;base64,{avatar_b64}" x="{M + 38}" '
+                 f'y="{y + 28}" width="104" height="104" clip-path="url(#avclip)" '
+                 f'preserveAspectRatio="xMidYMid slice"/>')
+    parts.append(pill(M + 50, y + 142, 82, 24, "Online", dot=True, size=10.5,
+                      fill="#0e1c14", stroke="#1e4d2f", tcolor="#7ee2a8"))
+    para = ("I'm a full-stack web developer from India, passionate about building "
+            "impactful products, solving real-world problems and continuous learning. "
+            "I love full-stack development, exploring new technologies and turning "
+            "ideas into scalable web applications.")
+    py = y + 42
+    for line in wrap(para, 56):
+        parts.append(text(M + 170, py, line, size=12.5, fill=T))
+        py += 18
+    chx = M + 170
+    for label, gl in [("🇮🇳 India", 62), ("⚡ Open Source", 92),
+                      ("● Open to Opportunities", 148)]:
+        parts.append(pill(chx, y + 148, gl, 26, label, size=10.5))
+        chx += gl + 8
+    rx0 = M + lw + 16
+    rw = CW - lw - 16
+    parts.append(card(rx0, y, rw, 190, rx=14))
+    parts.append(rect(rx0 + 1, y + 1, rw - 2, 34, "#0b111c", rx=13))
+    parts.append(f'<path d="M {rx0 + 1} {y + 34} L {rx0 + rw - 1} {y + 34}" '
+                 f'stroke="{BORDER}"/>')
+    for i, c in enumerate(["#ff5f56", "#ffbd2e", "#27c93f"]):
+        parts.append(f'<circle cx="{rx0 + 18 + i * 16}" cy="{y + 18}" r="5" fill="{c}"/>')
+    tx = rx0 + 84
+    for i, t in enumerate(["About", "Education", "Interests"]):
+        tw = len(t) * 6.6
+        parts.append(text(tx, y + 22, t, size=11,
+                          fill=H if i == 0 else MU,
+                          weight="700" if i == 0 else "500"))
+        if i == 0:
+            parts.append(rect(tx, y + 31, tw, 3, ACC, rx=1.5))
+        tx += tw + 18
+    lines = [
+        [("const ", KW), ("ashish", FN), (" = {", PUN)],
+        [("  role", KEY), (": ", PUN), ('"Full-Stack Developer"', STR), (",", PUN)],
+        [("  location", KEY), (": ", PUN), ('"India"', STR), (",", PUN)],
+        [("  leetcode", KEY), (": ", PUN), ('"182 problems solved"', STR), (",", PUN)],
+        [("  interests", KEY), (": [", PUN), ('"Web Dev", "UI/UX"', STR), ("],", PUN)],
+        [("  currently", KEY), (": ", PUN), ('"Building real projects"', STR), (",", PUN)],
+        [("  goal", KEY), (": ", PUN), ('"Create impactful products"', STR), (",", PUN)],
+        [("};", PUN)],
     ]
-    ry = 82
-    for glyph, label, vlines in rows:
-        parts.append(rect(rx0 + 18, ry - 16, 34, 34, "#161e2b", rx=9, stroke=BORDER))
-        parts.append(text(rx0 + 35, ry + 6, glyph, size=14, anchor="middle"))
-        parts.append(text(rx0 + 64, ry - 2, label, size=13, fill=H, weight="800"))
-        for j, line in enumerate(vlines):
-            parts.append(text(rx0 + 64, ry + 16 + j * 15, line, size=11, fill=MU))
-        ry += 34 + 15 * (len(vlines) - 1) + 16
+    for i, ln in enumerate(lines):
+        ly = y + 56 + i * 16
+        parts.append(text(rx0 + 18, ly, str(i + 1), size=10, fill="#4b5563",
+                          anchor="end", family=MONO))
+        spans = "".join(f'<tspan fill="{c}">{esc(t)}</tspan>' for t, c in ln)
+        parts.append(f'<text x="{rx0 + 32}" y="{ly}" font-family="{MONO}" '
+                     f'font-size="10.5">{spans}</text>')
     return hgt, "\n".join(parts)
 
 
 def build_tech(icons):
-    hgt = 224
+    hgt = 162
     parts = [heading(26, "Tech Stack", emoji="</>",
-                     chip="Always learning more →")]
-    cats = [
-        ("Languages", ["javascript", "typescript", "html5", "css", "cplusplus"],
-         ["JS", "TS", "HTML", "CSS", "C++"]),
-        ("Frontend", ["react", "nextdotjs", "tailwindcss", "redux", "figma"],
-         ["React", "Next", "Tailwind", "Redux", "Figma"]),
-        ("Backend", ["nodedotjs", "express", "prisma", "postman"],
-         ["Node", "Express", "Prisma", "Postman"]),
-        ("Database", ["mongodb", "postgresql", "firebase"],
-         ["MongoDB", "Postgres", "Firebase"]),
-        ("Tools & Cloud", ["git", "docker", "vercel", "github"],
-         ["Git", "Docker", "Vercel", "GitHub"]),
-    ]
-    cw = (CW - 4 * 12) / 5
-    for i, (title, slugs, labels) in enumerate(cats):
-        x = M + i * (cw + 12)
-        parts.append(card(x, 48, cw, hgt - 48, rx=12, fill=CARD2))
-        parts.append(rect(x + 14, 62, 20, 20, "#161e2b", rx=6, stroke=BORDER))
-        color = [ACC, CY, "#a78bfa", GREEN, "#f778ba"][i]
-        parts.append(f'<circle cx="{x + 24}" cy="72" r="4" fill="{color}"/>')
-        parts.append(text(x + 42, 77, title, size=12, fill=H, weight="800"))
-        cols = 3
-        iw = (cw - 20) / cols
-        for j, slug in enumerate(slugs):
-            col, row = j % cols, j // cols
-            ix = x + 10 + col * iw + iw / 2
-            iy = 96 + row * 56
-            if slug in icons:
-                parts.append(icon_img(icons[slug], ix - 12, iy, 24))
-            parts.append(text(f"{ix:.1f}", iy + 38, labels[j], size=9.5, fill=MU,
-                              anchor="middle"))
+                     sub="Tools and technologies I work with")]
+    filters = ["All", "Languages", "Frontend", "Backend", "Database", "Tools", "Others"]
+    fx = W - M
+    for t in reversed(filters):
+        w = len(t) * 6.6 + 26
+        fx -= w + 8
+        active = t == "All"
+        parts.append(pill(fx, 10, w, 26, t, size=11,
+                          fill="#1d2b4d" if active else CARD2,
+                          stroke="#2f4f8f" if active else BORDER,
+                          tcolor="#9ecbff" if active else MU,
+                          weight="700" if active else "500"))
+    items = [("cplusplus", "C++"), ("javascript", "JavaScript"),
+             ("typescript", "TypeScript"), ("react", "React"),
+             ("nextdotjs", "Next.js"), ("nodedotjs", "Node.js"),
+             ("express", "Express"), ("mongodb", "MongoDB"),
+             ("postgresql", "Postgres"), ("prisma", "Prisma"),
+             ("docker", "Docker"), ("git", "Git"),
+             ("tailwindcss", "Tailwind"), ("vercel", "Vercel")]
+    n = len(items)
+    gap = 5
+    cw = (CW - (n - 1) * gap) / n
+    y = 62
+    for i, (slug, label) in enumerate(items):
+        x = M + i * (cw + gap)
+        parts.append(card(x, y, cw, 84, rx=11, fill=CARD2))
+        parts.append(rect(x + cw / 2 - 17, y + 14, 34, 34, "#161e2b", rx=9,
+                          stroke=BORDER))
+        if slug in icons:
+            parts.append(icon_img(icons[slug], x + cw / 2 - 11, y + 20, 22))
+        parts.append(text(x + cw / 2, y + 68, label, size=9.5, fill=MU,
+                          anchor="middle"))
     return hgt, "\n".join(parts)
 
 
-def build_projects(projects):
-    hgt = 470
+def build_projects(projects, gh_icon, badge_imgs):
+    hgt = 582
     parts = [heading(26, "Featured Projects", emoji="📦",
-                     chip="View all repositories →")]
-    cw = (CW - 16) / 2
-    ch = 196
-    for i, p in enumerate(projects):
-        col, row = i % 2, i // 2
-        x = M + col * (cw + 16)
-        y = 48 + row * (ch + 16)
+                     sub="A showcase of my recent work, personal projects, and "
+                         "real-world applications.")]
+    bw = 150
+    parts.append(pill(W - M - bw, 8, bw, 32, "View All Projects →", size=12,
+                      fill=CARD2, tcolor=ACC, weight="700"))
+    cw = (CW - 2 * 14) / 3
+    ch = 244
+    cells = [(i, p) for i, p in enumerate(projects)]
+    for i, p in cells:
+        col, row = i % 3, i // 3
+        x = M + col * (cw + 14)
+        y = 62 + row * (ch + 14)
         parts.append(card(x, y, cw, ch, rx=14))
-        if i == 0:
-            parts.append(pill(x + 16, y + 14, 74, 22, "Featured", size=10,
-                              fill="#1d2b4d", stroke="#2f4f8f", tcolor="#79b8ff",
-                              weight="700"))
-            ty = y + 64
-        else:
-            ty = y + 52
-        parts.append(rect(x + 16, ty - 24, 34, 34, p["accent"], rx=9))
-        parts.append(text(x + 33, ty - 1, p["letter"], size=17, fill="#ffffff",
-                          weight="800", anchor="middle"))
-        parts.append(text(x + 60, ty - 6, p["title"], size=15, fill=H, weight="800"))
-        parts.append(text(x + 60, ty + 10, f"github.com/{OWNER}/{p['name']}", size=10,
-                          fill=MU))
-        parts.append(png_img(p["thumb"], x + cw - 176, y + 16, 160, 84, rx=8,
+        parts.append(png_img(p["thumb"], x + 12, y + 12, cw - 24, 96, rx=8,
                              cid=f"th{i}"))
-        dy = ty + 38
-        for line in wrap(p["desc"], 46)[:2]:
-            parts.append(text(x + 16, dy, line, size=11, fill=MU))
+        parts.append(rect(x + 14, y + 122, 26, 26, p["accent"], rx=7))
+        parts.append(text(x + 27, y + 140, p["letter"], size=13, fill="#ffffff",
+                          weight="800", anchor="middle"))
+        parts.append(text(x + 48, y + 140, p["title"], size=14, fill=H, weight="800"))
+        dy = y + 164
+        for line in wrap(p["desc"], 47)[:2]:
+            parts.append(text(x + 14, dy, line, size=11, fill=MU))
             dy += 15
-        tx = x + 16
+        tx = x + 14
         for tag in p["tags"]:
-            tw = len(tag) * 5.8 + 18
-            parts.append(rect(tx, y + ch - 52, tw, 20, "#161e2b", rx=10, stroke=BORDER))
-            parts.append(text(tx + tw / 2, y + ch - 38, tag, size=9.5, fill=T,
+            tw = len(tag) * 5.6 + 16
+            parts.append(rect(tx, y + 196, tw, 20, "#161e2b", rx=10, stroke=BORDER))
+            parts.append(text(tx + tw / 2, y + 210, tag, size=9.5, fill=T,
                               anchor="middle"))
-            tx += tw + 6
-        parts.append(text(x + cw - 16, y + ch - 20, "Repo →", size=11.5, fill=ACC,
-                          weight="700", anchor="end"))
+            tx += tw + 5
+        parts.append(f'<line x1="{x + 14}" y1="{y + 224}" x2="{x + cw - 14}" '
+                     f'y2="{y + 224}" stroke="{BORDER}"/>')
+        parts.append(text(x + 14, y + 238, "Repo →", size=11.5, fill=ACC,
+                          weight="700"))
+        parts.append(text(x + cw - 14, y + 238, "‹/› Code", size=11, fill=MU,
+                          anchor="end"))
+    y2 = 62 + ch + 14
+    x3 = M + 2 * (cw + 14)
+    parts.append(card(x3, y2, cw, ch, rx=14))
+    for j, (bimg, blabel) in enumerate(badge_imgs):
+        hx = x3 + 58 + j * ((cw - 80) / 3)
+        parts.append(f'<path d="{hexpath(hx, y2 + 56, 40)}" fill="#161e2b" '
+                     f'stroke="url(#ring)" stroke-width="2.5"/>')
+        parts.append(f'<image href="data:image/png;base64,{bimg}" x="{hx - 27}" '
+                     f'y="{y2 + 29}" width="54" height="54"/>')
+        parts.append(text(hx, y2 + 112, blabel, size=9.5, fill=MU, anchor="middle"))
+    parts.append(rect(x3 + 14, y2 + 126, 26, 26, "#8B5CF6", rx=7))
+    parts.append(text(x3 + 27, y2 + 144, "B", size=13, fill="#ffffff", weight="800",
+                      anchor="middle"))
+    parts.append(text(x3 + 48, y2 + 144, "GitHub Badges", size=14, fill=H,
+                      weight="800"))
+    parts.append(text(x3 + 14, y2 + 168, "My GitHub achievements and collaboration "
+                                         "journey.", size=11, fill=MU))
+    tx = x3 + 14
+    for tag in ["Git", "GitHub", "Open Source"]:
+        tw = len(tag) * 5.6 + 16
+        parts.append(rect(tx, y2 + 196, tw, 20, "#161e2b", rx=10, stroke=BORDER))
+        parts.append(text(tx + tw / 2, y2 + 210, tag, size=9.5, fill=T,
+                          anchor="middle"))
+        tx += tw + 5
+    parts.append(f'<line x1="{x3 + 14}" y1="{y2 + 224}" x2="{x3 + cw - 14}" '
+                 f'y2="{y2 + 224}" stroke="{BORDER}"/>')
+    parts.append(text(x3 + 14, y2 + 238, "View Repo →", size=11.5, fill=ACC,
+                      weight="700"))
+    parts.append(text(x3 + cw - 14, y2 + 238, "‹/› Code", size=11, fill=MU,
+                      anchor="end"))
+    xc = M + cw + 14
+    parts.append(card(xc, y2, cw, ch, rx=14, fill=CARD2))
+    parts.append(icon_img(gh_icon, xc + cw / 2 - 34, y2 + 44, 68))
+    parts.append(text(xc + cw / 2, y2 + 146, "27 Public Repositories", size=17,
+                      fill=H, weight="800", anchor="middle"))
+    for j, line in enumerate(wrap("Browse everything I've built — apps, tools and "
+                                  "experiments.", 46)[:2]):
+        parts.append(text(xc + cw / 2, y2 + 170 + j * 15, line, size=11,
+                          fill=MU, anchor="middle"))
+    parts.append(pill(xc + cw / 2 - 92, y2 + 192, 184, 36, "View All Projects →",
+                      size=12.5, fill="#1d2b4d", stroke="#2f4f8f", tcolor="#9ecbff",
+                      weight="700"))
     return hgt, "\n".join(parts)
 
 
-def heatmap_parts(x0, y0, contrib, cols=52, cell=8.5, gap=2.5, label=True):
+def heatmap_parts(x0, y0, contrib, cols, cell, gap, label=True):
     days = [d for week in contrib["weeks"] for d in week["contributionDays"]]
     days = days[-cols * 7:]
     by_date = {d["date"]: d["contributionCount"] for d in days}
@@ -412,128 +558,258 @@ def heatmap_parts(x0, y0, contrib, cols=52, cell=8.5, gap=2.5, label=True):
             parts.append(rect(x0 + c * (cell + gap), y0 + r * (cell + gap), cell, cell,
                               levels[lvl], rx=2))
         wd = d0 + datetime.timedelta(days=c * 7)
-        if label and (c == 0 or wd.day <= 7) and c - last_label >= 4:
+        if label and (c == 0 or wd.day <= 7) and c - last_label >= 6:
             last_label = c
-            parts.append(text(x0 + c * (cell + gap), y0 - 9, wd.strftime("%b"), size=9,
+            parts.append(text(x0 + c * (cell + gap), y0 - 8, wd.strftime("%b"), size=9,
                               fill=MU, anchor="middle"))
     if label:
         for i, lab in [(0, "Mon"), (2, "Wed"), (4, "Fri")]:
-            parts.append(text(x0 - 8, y0 + i * (cell + gap) + 8, lab, size=9, fill=MU,
+            parts.append(text(x0 - 8, y0 + i * (cell + gap) + 7, lab, size=8.5, fill=MU,
                               anchor="end"))
     return parts
 
 
-def build_stats(contrib, stats):
-    hgt = 274
-    parts = [heading(26, "GitHub Stats", emoji="📊")]
-    y = 48
-    lw = 640
-    parts.append(card(M, y, lw, hgt - 48, rx=14))
-    parts.extend(heatmap_parts(M + 54, y + 70, contrib))
-    lx = M + lw + 16
-    rw = CW - lw - 16
-    parts.append(card(lx, y, rw, hgt - 48, rx=14))
-    rows = [("662", "Total Commits"), (str(stats["prs"]), "Pull Requests"),
-            (str(stats["issues"]), "Issues Resolved")]
-    ry = y + 56
-    for value, label in rows:
-        parts.append(rect(lx + 20, ry - 22, 40, 40, "#161e2b", rx=10, stroke=BORDER))
-        parts.append(f'<circle cx="{lx + 40}" cy="{ry - 2}" r="5" fill="{ACC}"/>')
-        parts.append(text(lx + 74, ry - 4, value, size=19, fill=H, weight="800"))
-        parts.append(text(lx + 74, ry + 14, label, size=10.5, fill=MU))
-        ry += 62
+def build_stats(contrib, stats, lc, icons):
+    hgt = 278
+    parts = [heading(26, "GitHub & LeetCode Stats", emoji="📊",
+                     sub="My coding journey and contributions over time.")]
+    for i, t in enumerate(["7D", "1M", "6M", "1Y", "All"]):
+        w = 34
+        x = W - M - (5 - i) * (w + 6)
+        active = t == "1Y"
+        parts.append(pill(x, 8, w, 26, t, size=11,
+                          fill="#1d2b4d" if active else CARD2,
+                          stroke="#2f4f8f" if active else BORDER,
+                          tcolor="#9ecbff" if active else MU,
+                          weight="700" if active else "500"))
+    y = 62
+    lw = 500
+    parts.append(card(M, y, lw, 200, rx=14))
+    parts.append(rect(M + 16, y + 14, 26, 26, "#161e2b", rx=7, stroke=BORDER))
+    parts.append(text(M + 29, y + 32, "▦", size=13, fill=GREEN, anchor="middle"))
+    parts.append(text(M + 52, y + 32, "GitHub Contributions", size=13.5, fill=H,
+                      weight="800"))
+    cell, gap = 7.5, 2
+    avail = lw - 54 - 14
+    cols = int(avail // (cell + gap))
+    parts.extend(heatmap_parts(M + 54, y + 56, contrib, cols, cell, gap))
+    parts.append(text(M + 16, y + 184, f"Total Contributions: {contrib['totalContributions']}",
+                      size=11, fill=MU))
+    lx = M + lw - 150
+    parts.append(text(lx, y + 184, "Less", size=9.5, fill=MU))
+    for i in range(5):
+        lv = ["#161b22", "#0e4429", "#006d32", "#26a641", "#39d353"][i]
+        parts.append(rect(lx + 30 + i * 14, y + 175, 10, 10, lv, rx=2))
+    parts.append(text(lx + 106, y + 184, "More", size=9.5, fill=MU))
+    tx = M + lw + 16
+    tw = 176
+    parts.append(card(tx, y, tw, 200, rx=14))
+    rows = [("commits", str(stats["commits"]), "Total Commits"),
+            ("prs", str(stats["prs"]), "Pull Requests"),
+            ("issues", str(stats["issues"]), "Issues Resolved")]
+    for i, (kind, value, label) in enumerate(rows):
+        ry = y + 18 + i * 62
+        parts.append(rect(tx + 14, ry, 34, 34, "#161e2b", rx=9, stroke=BORDER))
+        gx, gy = tx + 31, ry + 17
+        accent = [ACC, "#a78bfa", CY][i]
+        if kind == "commits":
+            parts.append(f'<circle cx="{gx}" cy="{gy}" r="5" fill="{accent}"/>'
+                         f'<path d="M {gx} {gy + 5} L {gx} {gy + 10}" stroke="{accent}" '
+                         f'stroke-width="2"/>')
+        elif kind == "prs":
+            parts.append(f'<circle cx="{gx - 3}" cy="{gy - 6}" r="3" fill="none" '
+                         f'stroke="{accent}" stroke-width="2"/>'
+                         f'<circle cx="{gx - 3}" cy="{gy + 7}" r="3" fill="none" '
+                         f'stroke="{accent}" stroke-width="2"/>'
+                         f'<path d="M {gx - 3} {gy - 2} L {gx - 3} {gy + 3} '
+                         f'M {gx + 5} {gy + 7} L {gx + 9} {gy + 7} L {gx + 9} {gy - 6} '
+                         f'L {gx + 5} {gy - 6}" fill="none" stroke="{accent}" '
+                         f'stroke-width="2"/>')
+        else:
+            parts.append(f'<circle cx="{gx}" cy="{gy}" r="8" fill="none" '
+                         f'stroke="{accent}" stroke-width="2"/>'
+                         f'<path d="M {gx} {gy - 4} L {gx} {gy + 1} L {gx + 4} {gy + 1}" '
+                         f'fill="none" stroke="{accent}" stroke-width="2"/>')
+        parts.append(text(tx + 60, ry + 16, value, size=17, fill=H, weight="800"))
+        parts.append(text(tx + 60, ry + 32, label, size=10, fill=MU))
+    ex = tx + tw + 16
+    ew = CW - lw - tw - 32
+    parts.append(card(ex, y, ew, 200, rx=14))
+    parts.append(text(ex + 16, y + 30, "LeetCode Progress", size=13.5, fill=H,
+                      weight="800"))
+    parts.append(text(ex + ew - 16, y + 30, "Profile →", size=11, fill=LC,
+                      weight="700", anchor="end"))
+    parts.append(text(ex + 16, y + 64, str(lc["solved"]), size=26, fill=LC,
+                      weight="800"))
+    parts.append(text(ex + 16 + len(str(lc["solved"])) * 16 + 8, y + 64,
+                      "Solved Problems", size=11, fill=MU))
+    diff = [(d["difficulty"], d["count"]) for d in lc["by_diff"] if d["difficulty"] != "All"]
+    mx = max(c for _, c in diff) or 1
+    dcol = {"Easy": "#00b8a3", "Medium": "#ffc01e", "Hard": "#ff375f"}
+    for i, (name, cnt) in enumerate(diff):
+        by = y + 84 + i * 30
+        parts.append(text(ex + 16, by + 4, name, size=10.5, fill=T, weight="600"))
+        parts.append(text(ex + ew - 16, by + 4, str(cnt), size=10.5, fill=H,
+                          weight="700", anchor="end"))
+        parts.append(rect(ex + 16, by + 10, ew - 32, 6, "#1c2433", rx=3))
+        parts.append(rect(ex + 16, by + 10, (ew - 32) * cnt / mx, 6, dcol[name], rx=3))
+    parts.append(text(ex + 16, y + 186, f"Global Ranking #{lc['ranking']:,}", size=10.5,
+                      fill=MU))
     return hgt, "\n".join(parts)
 
 
-def build_achievements(badges):
-    hgt = 196
-    parts = [heading(26, "Achievements", emoji="🏆")]
-    parts.append(card(M, 48, CW, hgt - 48, rx=14))
-    parts.append(text(M + 24, 84, "GitHub Achievements", size=13.5, fill=H, weight="800"))
-    x = M + 30
-    for b in badges:
-        parts.append(f'<image href="data:image/png;base64,{b["img"]}" x="{x}" y="98" '
-                     f'width="72" height="72"/>')
-        parts.append(text(x + 36, 186, b["label"], size=10.5, fill=MU, anchor="middle"))
-        x += 170
-    parts.append(text(M + 560, 120, "Always shipping, always learning.", size=12,
+def build_achievements(badges, lc_badges, lc):
+    hgt = 226
+    parts = [heading(26, "Achievements", emoji="🏆",
+                     sub="Badges and milestones from GitHub and LeetCode.")]
+    y = 62
+    parts.append(card(M, y, CW, 148, rx=14))
+    gh_badges = [(b["img"], b["label"]) for b in badges]
+    positions = [M + 110, M + 270, M + 430]
+    for (img, label), hx in zip(gh_badges, positions):
+        parts.append(f'<path d="{hexpath(hx, y + 58, 44)}" fill="#161e2b" '
+                     f'stroke="url(#ring)" stroke-width="2.5"/>')
+        parts.append(f'<image href="data:image/png;base64,{img}" x="{hx - 30}" '
+                     f'y="{y + 28}" width="60" height="60"/>')
+        parts.append(text(hx, y + 124, label, size=11.5, fill=H, weight="700",
+                          anchor="middle"))
+    hx = M + 590
+    parts.append(f'<path d="{hexpath(hx, y + 58, 44)}" fill="#241d10" '
+                 f'stroke="{LC}" stroke-width="2.5"/>')
+    parts.append(text(hx, y + 56, str(lc["solved"]), size=26, fill=LC, weight="800",
+                      anchor="middle"))
+    parts.append(text(hx, y + 76, "Solved", size=11, fill="#ffe0a8", anchor="middle"))
+    parts.append(text(hx, y + 124, "LeetCode", size=11.5, fill=H, weight="700",
+                      anchor="middle"))
+    px, py = M + 700, y + 34
+    for label in lc_badges:
+        pw = len(label) * 6.4 + 26
+        if px + pw > M + CW - 16:
+            px, py = M + 700, py + 34
+        parts.append(pill(px, py, pw, 26, label, size=10.5, fill="#241d10",
+                          stroke="#6b4a12", tcolor="#ffd88a", weight="600"))
+        px += pw + 8
+    parts.append(text(M + 700, y + 112, "Always shipping, always learning.", size=12,
                       fill=MU, style="italic"))
-    parts.append(text(M + 560, 146, "Star ⭐ the repos if they help you!", size=12.5,
+    parts.append(text(M + 700, y + 134, "Star ⭐ the repos if they help you!", size=12.5,
                       fill=ACC, weight="600"))
     return hgt, "\n".join(parts)
 
 
 def build_journey():
-    hgt = 306
-    parts = [heading(26, "My Journey", emoji="🧭")]
-    lw = 596
-    parts.append(card(M, 48, lw, hgt - 48, rx=14))
+    hgt = 322
+    parts = [heading(26, "My Journey", emoji="🧭",
+                     sub="A timeline of my learning, projects, and achievements.")]
+    y = 62
+    lw = CW
+    parts.append(card(M, y, lw, 130, rx=14))
     entries = [
-        ("2023", "First web projects — HTML, CSS & JavaScript builds"),
-        ("2024", "Internship assignments & interactive JS projects"),
-        ("2025", "Full-stack builds — task managers, e-learning, e-commerce"),
-        ("2026", "Teen Helpline platform & profile dashboards"),
-        ("Now", "Open to full-time roles and collaborations"),
+        ("2023", "Started learning", "web development", ACC),
+        ("2024", "Built interactive", "JS projects", ACC),
+        ("2025", "Full-stack MERN", "applications", ACC),
+        ("2026", "Teen Helpline &", "profile dashboards", ACC),
+        ("Now", "Open to full-time", "roles & collabs", GREEN),
     ]
-    ty = 84
-    line_x = M + 44
-    parts.append(f'<line x1="{line_x}" y1="{ty}" x2="{line_x}" y2="{ty + 4 * 50}" '
+    line_y = y + 44
+    x0 = M + 95
+    step = (CW - 190) / 4
+    parts.append(f'<line x1="{x0}" y1="{line_y}" x2="{x0 + step * 4}" y2="{line_y}" '
                  f'stroke="{BORDER}" stroke-width="2"/>')
-    for i, (year, msg) in enumerate(entries):
-        cy = ty + i * 50
-        color = GREEN if i == len(entries) - 1 else ACC
-        parts.append(f'<circle cx="{line_x}" cy="{cy}" r="7" fill="{PAGE}" '
+    parts.append(f'<line x1="{x0 + step * 3}" y1="{line_y}" x2="{x0 + step * 4}" '
+                 f'y2="{line_y}" stroke="{GREEN}" stroke-width="2"/>')
+    for i, (year, l1, l2, color) in enumerate(entries):
+        cx = x0 + step * i
+        parts.append(f'<circle cx="{cx}" cy="{line_y}" r="7" fill="{PAGE}" '
                      f'stroke="{color}" stroke-width="3"/>')
-        parts.append(text(M + 70, cy + 4, year, size=12.5, fill=color, weight="800"))
-        parts.append(text(M + 140, cy + 4, msg, size=12, fill=T))
-    qx = M + lw + 16
-    qw = CW - lw - 16
-    parts.append(card(qx, 48, qw, hgt - 48, rx=14, fill=CARD2))
-    parts.append(text(qx + 26, 110, "“", size=54, fill=ACC, weight="800",
+        parts.append(text(cx, y + 32, year, size=13, fill=color, weight="800",
+                          anchor="middle"))
+        parts.append(text(cx, y + 72, l1, size=11, fill=T, anchor="middle"))
+        parts.append(text(cx, y + 88, l2, size=11, fill=T, anchor="middle"))
+    qy = y + 144
+    parts.append(card(M, qy, CW, 100, rx=14, fill="#141024"))
+    parts.append(f'<clipPath id="qclip"><rect x="{M + 1}" y="{qy + 1}" width="{CW - 2}" '
+                 f'height="98" rx="13"/></clipPath>')
+    parts.append(f'<g clip-path="url(#qclip)">'
+                 + rect(M, qy, CW, 100, "url(#qsky)")
+                 + city_scape(qy + 20, qy + 100, 33, "#191340", hmin=30, hmax=76)
+                 + rect(M, qy + 84, CW, 16, "#0c0918")
+                 + rect(M, qy, CW, 100, "url(#fade)")
+                 + '</g>')
+    parts.append(f'<path d="{M + 1} {qy + 1} L {M + CW - 1} {qy + 1} '
+                 f'L {M + CW - 1} {qy + 99} L {M + 1} {qy + 99} Z" fill="none" '
+                 f'stroke="{BORDER}" stroke-width="1.2"/>')
+    parts.append(text(M + 300, qy + 44, "“", size=44, fill=ACC, weight="800",
                       family="Georgia, serif"))
-    quote = ["Consistency builds skills,", "projects build experience,",
-             "and both build a better you."]
-    for i, line in enumerate(quote):
-        parts.append(text(qx + 30, 134 + i * 24, line, size=14, fill=T, style="italic"))
-    parts.append(text(qx + qw - 30, 232, "— Ashis", size=13, fill=MU, anchor="end"))
+    parts.append(text(M + 334, qy + 46,
+                      "Consistency builds skills, projects build experience,", size=14.5,
+                      fill=H, style="italic"))
+    parts.append(text(M + 334, qy + 70,
+                      "and both build a better you.”", size=14.5, fill=H,
+                      style="italic"))
+    parts.append(text(M + CW - 40, qy + 88, "— Ashish Vibhor", size=12.5, fill="#aeb8cc",
+                      anchor="end"))
     return hgt, "\n".join(parts)
 
 
 def build_connect(icons):
-    hgt = 168
-    parts = [heading(26, "Let's Connect", emoji="✈️")]
-    parts.append(text(M, 62, "Always open to interesting projects, collaborations and "
-                             "opportunities.", size=13, fill=MU))
+    hgt = 174
+    parts = [heading(26, "Let's Connect", emoji="✈️",
+                     sub="Always open to interesting projects, collaborations and "
+                         "opportunities.")]
+    y = 62
     btns = [("linkedin", "LinkedIn", "#0A66C2"), ("github", "GitHub", "#161b22"),
-            ("gmail", "Email", "#D14836")]
-    bw = (CW - 2 * 16) / 3
+            ("leetcode", "LeetCode", LC), ("gmail", "Email", "#D14836")]
+    bw = 131
     for i, (slug, label, color) in enumerate(btns):
-        x = M + i * (bw + 16)
-        parts.append(rect(x, 84, bw, 52, color, rx=10,
+        x = M + i * (bw + 12)
+        parts.append(rect(x, y, bw, 52, color, rx=10,
                           stroke=BORDER if slug == "github" else "none"))
         if slug in icons:
-            parts.append(icon_img(icons[slug], x + bw / 2 - 66, 98, 24))
-            parts.append(text(x + bw / 2 + 6, 117, label, size=15, fill="#ffffff",
-                              weight="700", anchor="middle"))
-        else:
-            parts.append(rect(x + bw / 2 - 66, 98, 24, 24, "#ffffff", rx=5))
-            parts.append(text(x + bw / 2 - 54, 116, "in", size=14, fill="#0A66C2",
+            parts.append(icon_img(icons[slug], x + 16, y + 14, 24))
+            parts.append(text(x + 48, y + 33, label, size=14, fill="#ffffff",
+                              weight="700"))
+        elif slug == "linkedin":
+            parts.append(rect(x + 16, y + 14, 24, 24, "#ffffff", rx=5))
+            parts.append(text(x + 28, y + 32, "in", size=13, fill="#0A66C2",
                               weight="800", anchor="middle"))
-            parts.append(text(x + bw / 2 + 6, 117, label, size=15, fill="#ffffff",
-                              weight="700", anchor="middle"))
+            parts.append(text(x + 48, y + 33, label, size=14, fill="#ffffff",
+                              weight="700"))
+    cx = M + 4 * (bw + 12) + 8
+    cwid = CW - 4 * (bw + 12) - 8
+    parts.append(card(cx, y, cwid, 96, rx=14, fill=CARD2))
+    rows = [("✉", "ashis2489@gmail.com", "Drop me an email"),
+            ("📍", "India", "Based in India"),
+            ("●", "Open to opportunities", "Let's build something great!")]
+    for i, (glyph, main, sub) in enumerate(rows):
+        ry = y + 20 + i * 26
+        gcol = GREEN if glyph == "●" else ACC
+        parts.append(text(cx + 18, ry + 6, glyph, size=12, fill=gcol))
+        parts.append(text(cx + 42, ry + 5, main, size=11.5, fill=H, weight="700"))
+        parts.append(text(cx + 42 + len(main) * 6.4 + 14, ry + 5, sub, size=10.5,
+                          fill=MU))
     return hgt, "\n".join(parts)
 
 
 def build_footer(gh_icon):
-    hgt = 58
+    hgt = 64
     parts = [rect(0, 0, W, hgt, "#0b111c")]
     parts.append(f'<line x1="0" y1="0" x2="{W}" y2="0" stroke="{BORDER}"/>')
-    parts.append(icon_img(gh_icon, M, 16, 26))
-    parts.append(text(M + 36, 35, "Ashis Kumar", size=13, fill=H, weight="800"))
-    parts.append(text(M + 140, 35, "|  Built with ❤  |  Full-Stack Developer  |  India",
-                      size=12, fill=MU))
-    parts.append(text(W - M, 35, "Code. Create. Contribute. Repeat. ↗", size=12.5,
-                      fill=ACC, anchor="end", weight="600"))
+    parts.append(rect(M, 17, 30, 30, "#161e2b", rx=8, stroke=BORDER))
+    parts.append(f'<path d="M {M + 11} {32 - 7} L {M + 22} {32} L {M + 11} {32 + 7} Z" '
+                 f'fill="{CY}"/>')
+    parts.append(text(M + 40, 32, "ASHISH", size=14, fill=H, weight="800"))
+    parts.append(text(M + 40, 48, "Full-Stack Developer | India", size=10, fill=MU))
+    tabs = ["Home", "About", "Projects", "Skills", "Stats", "Achievements", "Contact"]
+    x = W / 2 - 210
+    for t in tabs:
+        parts.append(text(x, 37, t, size=11.5, fill=MU))
+        x += len(t) * 6.4 + 18
+    parts.append(text(W - M - 46, 37, "Code. Create. Contribute. Repeat.", size=11,
+                      fill=MU, anchor="end"))
+    parts.append(rect(W - M - 34, 17, 30, 30, "#161e2b", rx=8, stroke=BORDER))
+    parts.append(f'<path d="M {W - M - 19} {40} L {W - M - 19} {26} M {W - M - 25} {32} '
+                 f'L {W - M - 19} {26} L {W - M - 13} {32}" fill="none" stroke="{ACC}" '
+                 f'stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>')
     return hgt, "\n".join(parts)
 
 
@@ -552,6 +828,17 @@ def main():
                  "{contributionCount date}}}}}}", "-f", f"login={OWNER}")
     contrib = contrib["data"]["user"]["contributionsCollection"]["contributionCalendar"]
 
+    lc_q = json.dumps({"query": "query u($username:String!){matchedUser(username:$username)"
+                       "{profile{ranking} submitStatsGlobal{acSubmissionNum"
+                       "{difficulty count}}}}",
+                       "variables": {"username": LC_USER}}).encode()
+    lc_raw = json.loads(fetch("https://leetcode.com/graphql/", data=lc_q))
+    mu = lc_raw["data"]["matchedUser"]
+    ac = {d["difficulty"]: d["count"] for d in mu["submitStatsGlobal"]["acSubmissionNum"]}
+    lc = {"solved": ac.get("All", 0), "ranking": mu["profile"]["ranking"],
+          "by_diff": mu["submitStatsGlobal"]["acSubmissionNum"]}
+    lc_badges = ["Annual Badge", "Daily Coding Challenge"]
+
     colors = {"typescript": "3178C6", "react": "61DAFB", "nextdotjs": "FFFFFF",
               "nodedotjs": "5FA04E", "tailwindcss": "06B6D4", "redux": "764ABC",
               "mongodb": "47A248", "postgresql": "4169E1", "prisma": "FFFFFF",
@@ -559,7 +846,7 @@ def main():
               "git": "F05032", "vercel": "FFFFFF", "figma": "F24E1E",
               "html5": "E34F26", "javascript": "F7DF1E", "github": "FFFFFF",
               "gmail": "EA4335", "cplusplus": "00599C", "css": "1572B6",
-              "postman": "FF6C37"}
+              "postman": "FF6C37", "leetcode": "FFA116"}
     icons = {}
     for slug, color in colors.items():
         try:
@@ -579,7 +866,7 @@ def main():
         {"name": "github-badges", "title": "GitHub Badges", "letter": "B", "accent": "#8B5CF6",
          "desc": "Profile badges and README widget collection for developers.",
          "tags": ["Markdown", "Badges", "Actions"]},
-        {"name": "priv", "title": "VEDAA Portfolio", "letter": "P", "accent": "#06B6D4",
+        {"name": "priv", "title": "Portfolio Website", "letter": "P", "accent": "#06B6D4",
          "desc": "3D developer portfolio and profile README experiments.",
          "tags": ["TypeScript", "3D Web", "SVG"]},
     ]
@@ -594,10 +881,27 @@ def main():
             f"https://github.githubassets.com/images/modules/profile/achievements/"
             f"{slug}-default.png")).decode()})
 
-    builders = [build_nav(icons["github"]), build_hero(icons), build_tiles(),
-                build_about(), build_tech(icons), build_projects(projects),
-                build_stats(contrib, stats), build_achievements(badges),
-                build_journey(), build_connect(icons), build_footer(icons["github"])]
+    avatar_b64 = base64.b64encode(pathlib.Path("assets/avatar.png").read_bytes()).decode()
+
+    def li_box(x, y):
+        return (rect(x, y, 16, 16, "#ffffff", rx=3)
+                + text(x + 8, y + 12, "in", size=10, fill="#0A66C2", weight="800",
+                       anchor="middle"))
+
+    builders = [
+        build_nav(icons["github"], li_box),
+        build_hero(icons),
+        build_strip(),
+        build_about(avatar_b64),
+        build_tech(icons),
+        build_projects(projects, icons["github"],
+                       [(b["img"], b["label"]) for b in badges]),
+        build_stats(contrib, stats, lc, icons),
+        build_achievements(badges, lc_badges, lc),
+        build_journey(),
+        build_connect(icons),
+        build_footer(icons["github"]),
+    ]
     total = sum(h for h, _ in builders)
     parts = [rect(0, 0, W, total, PAGE)]
     y = 0
@@ -610,7 +914,8 @@ def main():
         "<html><body style='background:#010409;margin:0'>"
         "<img src='assets/page.svg' style='width:1000px;display:block'></body></html>",
         encoding="utf-8")
-    print(f"page.svg: {total}px tall, {PAGE_SVG.stat().st_size} bytes | stats: {stats}")
+    print(f"page.svg: {total}px tall, {PAGE_SVG.stat().st_size} bytes | "
+          f"stats={stats} | lc solved={lc['solved']} rank={lc['ranking']}")
 
 
 if __name__ == "__main__":

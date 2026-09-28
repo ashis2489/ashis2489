@@ -1,12 +1,11 @@
 <div align="center">
-<img src="./assets/tiles/probe_v1.svg" width="100%" align="top" alt="probe1">
-<img src="./assets/tiles/probe_v2.svg" width="100%" align="top" alt="probe2">
-<table width="100%" cellspacing="0" cellpadding="0">
-<tr>
-<td width="50%"><img src="./assets/tiles/probe_r.svg" width="100%" align="top" alt="probe red"></td>
-<td width="50%"><img src="./assets/tiles/probe_b.svg" width="100%" align="top" alt="probe blue"></td>
-</tr>
-</table>
+<img align="left" width="33.3%" src="./assets/tiles/probe_r.svg" alt="fa">
+<img align="left" width="33.3%" src="./assets/tiles/probe_b.svg" alt="fb">
+<img align="left" width="33.3%" src="./assets/tiles/probe_v1.svg" alt="fc">
+<img align="left" width="33.3%" src="./assets/tiles/probe_v2.svg" alt="fd">
+<img align="left" width="33.3%" src="./assets/tiles/probe_r.svg" alt="fe">
+<img align="left" width="33.3%" src="./assets/tiles/probe_b.svg" alt="ff">
+<img src="./assets/tiles/probe_v1.svg" width="100%" align="top" alt="band">
 </div>
 
 <!--START_SECTION:activity-->

@@ -5,6 +5,7 @@ import html
 import json
 import pathlib
 import random
+import re
 import subprocess
 import urllib.request
 
@@ -888,33 +889,173 @@ def main():
                 + text(x + 8, y + 12, "in", size=10, fill="#0A66C2", weight="800",
                        anchor="middle"))
 
-    builders = [
-        build_nav(icons["github"], li_box),
-        build_hero(icons),
-        build_strip(),
-        build_about(avatar_b64),
-        build_tech(icons),
-        build_projects(projects, icons["github"],
-                       [(b["img"], b["label"]) for b in badges]),
-        build_stats(contrib, stats, lc, icons),
-        build_achievements(badges, lc_badges, lc),
-        build_journey(),
-        build_connect(icons),
-        build_footer(icons["github"]),
+    sections = [
+        ("nav", build_nav(icons["github"], li_box)),
+        ("hero", build_hero(icons)),
+        ("strip", build_strip()),
+        ("about", build_about(avatar_b64)),
+        ("tech", build_tech(icons)),
+        ("projects", build_projects(projects, icons["github"],
+                                    [(b["img"], b["label"]) for b in badges])),
+        ("stats", build_stats(contrib, stats, lc, icons)),
+        ("achievements", build_achievements(badges, lc_badges, lc)),
+        ("journey", build_journey()),
+        ("connect", build_connect(icons)),
+        ("footer", build_footer(icons["github"])),
     ]
-    total = sum(h for h, _ in builders)
+    off, yy = {}, 0
+    for n, (h, _) in sections:
+        off[n] = yy
+        yy += h
+    total = yy
     parts = [rect(0, 0, W, total, PAGE)]
-    y = 0
-    for h, body in builders:
-        parts.append(f'<g transform="translate(0 {y})">{body}</g>')
-        y += h
+    for n, (h, body) in sections:
+        parts.append(f'<g transform="translate(0 {off[n]})">{body}</g>')
     css = "@keyframes pulse { 0%,100% { opacity: .55; r: 5 } 50% { opacity: 1; r: 6.5 } }"
     PAGE_SVG.write_text(svg_doc(W, total, "\n".join(parts), css), encoding="utf-8")
+
+    links = {
+        "profile": f"https://github.com/{OWNER}",
+        "search": f"https://github.com/search?q=user%3A{OWNER}&type=repositories",
+        "gh": f"https://github.com/{OWNER}",
+        "li": f"https://linkedin.com/in/{LINKEDIN}/",
+        "repos": f"https://github.com/{OWNER}?tab=repositories",
+        "leetcode": f"https://leetcode.com/u/{LC_USER}/",
+        "teen": f"https://github.com/{OWNER}/teen-helpline",
+        "work": f"https://github.com/{OWNER}/work-",
+        "badges": f"https://github.com/{OWNER}/github-badges",
+        "priv": f"https://github.com/{OWNER}/priv",
+        "commits": f"https://github.com/search?q=author%3A{OWNER}&type=commits",
+        "mailto": "mailto:ashis2489@gmail.com",
+    }
+    alts = {
+        "profile": "Ashish on GitHub", "search": "Search Ashish's repositories",
+        "gh": "GitHub", "li": "LinkedIn", "repos": "All repositories",
+        "leetcode": "LeetCode profile", "teen": "Teen Helpline repo",
+        "work": "Employee Management repo", "badges": "GitHub Badges repo",
+        "priv": "Portfolio repo", "commits": "Ashish's commits",
+        "mailto": "Email Ashish",
+    }
+    rows = [
+        ("nav", "nav", 0, 54, [(0, 716, "profile"), (716, 876, "search"),
+                               (876, 919, "gh"), (919, 1000, "li")]),
+        ("hero", "hero", 0, 330, [(0, 1000, "profile")]),
+        ("strip", "strip", 0, 76, [(0, 261, "profile"), (261, 500, "repos"),
+                                   (500, 739, "repos"), (739, 1000, "leetcode")]),
+        ("about", "about", 0, 250, [(0, 1000, None)]),
+        ("tech", "tech", 0, 162, [(0, 1000, None)]),
+        ("phead", "projects", 0, 62, [(0, 828, None), (828, 1000, "repos")]),
+        ("prow1", "projects", 62, 306, [(0, 338.3, "teen"), (338.3, 661.7, "work"),
+                                        (661.7, 1000, "badges")]),
+        ("prow2", "projects", 306, 582, [(0, 338.3, "priv"), (338.3, 661.7, "repos"),
+                                         (661.7, 1000, "badges")]),
+        ("shead", "stats", 0, 62, [(0, 1000, None)]),
+        ("srow", "stats", 62, 278, [(0, 530, "profile"), (530, 722, "commits"),
+                                    (722, 1000, "leetcode")]),
+        ("ahead", "achievements", 0, 62, [(0, 1000, None)]),
+        ("arow", "achievements", 62, 226, [(0, 532, "profile"), (532, 1000, "leetcode")]),
+        ("journey", "journey", 0, 322, [(0, 1000, None)]),
+        ("chead", "connect", 0, 62, [(0, 1000, None)]),
+        ("crow", "connect", 62, 174, [(0, 159, "li"), (159, 302, "gh"),
+                                      (302, 445, "leetcode"), (445, 1000, "mailto")]),
+        ("footer", "footer", 0, 64, [(0, 1000, "profile")]),
+    ]
+    tiles_dir = OUT / "tiles"
+    tiles_dir.mkdir(exist_ok=True)
+    img_re = re.compile(r'<image [^>]* x="(-?[\d.]+)" y="(-?[\d.]+)"[^>]*/>')
+    body_by_sec = {n: b for n, (h, b) in sections}
+    html_lines = ['<div align="center">']
+    n_tiles = 0
+    for rname, sec, ly0, ly1, slices in rows:
+        hgt = ly1 - ly0
+        y0 = off[sec] + ly0
+        body = body_by_sec[sec]
+        defs = "" if 'id="sky"' in body else scene_defs()
+        seg = []
+        for i, (x0, x1, key) in enumerate(slices):
+            pct = (x1 - x0) / 10
+            if len(slices) > 1 and i == len(slices) - 1:
+                pct -= 0.05
+            filt = lambda m: (m.group(0)
+                              if x0 - 8 <= float(m.group(1)) <= x1 + 8
+                              and ly0 - 8 <= float(m.group(2)) <= ly1 + 8 else "")
+            svg = (f'<svg xmlns="http://www.w3.org/2000/svg" '
+                   f'viewBox="{x0} {y0} {x1 - x0} {hgt}" '
+                   f'width="{x1 - x0}" height="{hgt}">\n'
+                   f'<style>{css}</style>\n{defs}\n'
+                   f'<g transform="translate(0 {off[sec]})">'
+                   f'{img_re.sub(filt, body)}</g>\n</svg>\n')
+            fn = f"{rname}{i}.svg"
+            (tiles_dir / fn).write_text(svg, encoding="utf-8")
+            n_tiles += 1
+            alt = alts.get(key) or f"{rname} section"
+            img = (f'<img align="top" width="{pct:.2f}%" '
+                   f'src="./assets/tiles/{fn}" alt="{esc(alt)}">')
+            seg.append(f'<a href="{links[key]}">{img}</a>' if key else img)
+        html_lines.append("".join(seg))
+    html_lines.append("</div>")
+
+    readme = f'''{chr(10).join(html_lines)}
+
+<div align="center">
+  <a href="https://github.com/{OWNER}"><img src="https://img.shields.io/badge/Follow-%40{OWNER}-0969da?style=for-the-badge&logo=github&logoColor=white&labelColor=0d1117" alt="Follow @{OWNER}" /></a>
+  <a href="https://linkedin.com/in/{LINKEDIN}"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white&labelColor=0d1117" alt="LinkedIn" /></a>
+  <a href="https://leetcode.com/u/{LC_USER}/"><img src="https://img.shields.io/badge/LeetCode-{lc["solved"]}%20Solved-FFA116?style=for-the-badge&logo=leetcode&logoColor=white&labelColor=0d1117" alt="LeetCode — {lc["solved"]} solved" /></a>
+  <a href="mailto:ashis2489@gmail.com"><img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white&labelColor=0d1117" alt="Email" /></a>
+  <img src="https://komarev.com/ghpvc/?username={OWNER}&style=for-the-badge&color=00f2fe&labelColor=0d1117&label=PROFILE+VIEWS" alt="Profile views" />
+</div>
+
+<details>
+  <summary><b>🖥️ Run <code>ashis.exe</code> — click to boot specs</b></summary>
+  <br/>
+
+```typescript
+const ashis: Developer = {{
+  name:        "Ashish Vibhor",
+  username:    "{OWNER}",
+  leetcode:    "{LC_USER}",
+  role:        "Full-Stack Web Developer",
+  location:    "India 🇮🇳",
+  stack:       ["React", "Next.js", "TypeScript", "Node.js"],
+  learning:    ["System Design", "AWS", "Cloud Architecture"],
+  openTo:      ["Collaborations", "Freelance", "Full-time"],
+  funFact:     "I debug with console.log and I'm not ashamed 🙈",
+  motto:       "Code. Create. Contribute. Repeat. ⚡"
+}};
+```
+
+</details>
+
+### Recent activity
+
+<!--START_SECTION:activity-->
+<!--END_SECTION:activity-->
+
+<details>
+  <summary>⌨️ Coding stats</summary>
+  <br/>
+
+  <!--START_SECTION:waka-->
+  <!--END_SECTION:waka-->
+
+</details>
+
+<details>
+  <summary>🐍 Contribution snake</summary>
+  <br/>
+
+  <img src="https://raw.githubusercontent.com/{OWNER}/{OWNER}/output/github-contribution-grid-snake-dark.svg" width="100%" alt="Contribution snake animation" />
+
+</details>
+'''
+    pathlib.Path("README.md").write_text(readme, encoding="utf-8")
     pathlib.Path("preview.html").write_text(
-        "<html><body style='background:#010409;margin:0'>"
-        "<img src='assets/page.svg' style='width:1000px;display:block'></body></html>",
+        "<html><body style='background:#010409;margin:0;width:1000px'>"
+        + "\n".join(html_lines) + "</body></html>",
         encoding="utf-8")
+    tiles_bytes = sum(p.stat().st_size for p in tiles_dir.glob("*.svg"))
     print(f"page.svg: {total}px tall, {PAGE_SVG.stat().st_size} bytes | "
+          f"{n_tiles} tiles, {tiles_bytes} bytes | "
           f"stats={stats} | lc solved={lc['solved']} rank={lc['ranking']}")
 
 

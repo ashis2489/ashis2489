@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 2280 1000 62" width="1000" height="62">
+<style>@keyframes pulse { 0%,100% { opacity: .55; r: 5 } 50% { opacity: 1; r: 6.5 } }</style>
+<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#141132"/><stop offset="0.45" stop-color="#3a2a66"/><stop offset="0.72" stop-color="#7c4680"/><stop offset="0.9" stop-color="#c2657e"/><stop offset="1" stop-color="#e29168"/></linearGradient><linearGradient id="heroG" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#a78bfa"/><stop offset="0.55" stop-color="#7c9cff"/><stop offset="1" stop-color="#22d3ee"/></linearGradient><linearGradient id="fade" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0a0e15" stop-opacity="0.93"/><stop offset="0.6" stop-color="#0a0e15" stop-opacity="0.35"/><stop offset="1" stop-color="#0a0e15" stop-opacity="0.05"/></linearGradient><linearGradient id="btn" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#7c5cff"/><stop offset="1" stop-color="#4d8dff"/></linearGradient><linearGradient id="ring" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a78bfa"/><stop offset="1" stop-color="#22d3ee"/></linearGradient><linearGradient id="qsky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b1638"/><stop offset="1" stop-color="#4b2f6e"/></linearGradient></defs>
+<g transform="translate(0 2280)"><text x="22" y="26" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="17" fill="#c9d1d9" font-weight="400" text-anchor="start" font-style="normal">✈️</text>
+<text x="52" y="26" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="20" fill="#f0f6fc" font-weight="800" text-anchor="start" font-style="normal">Let&#x27;s Connect</text>
+<rect x="207.0" y="18.0" width="26.0" height="3.0" rx="1.5" fill="#58a6ff"/>
+<text x="22" y="46" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11.5" fill="#8b949e" font-weight="400" text-anchor="start" font-style="normal">Always open to interesting projects, collaborations and opportunities.</text>
+<rect x="22.0" y="62.0" width="131.0" height="52.0" rx="10" fill="#0A66C2" stroke="none" stroke-width="1"/>
+<rect x="38.0" y="76.0" width="24.0" height="24.0" rx="5" fill="#ffffff"/>
+<text x="50" y="94" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#0A66C2" font-weight="800" text-anchor="middle" font-style="normal">in</text>
+<text x="70" y="95" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#ffffff" font-weight="700" text-anchor="start" font-style="normal">LinkedIn</text>
+<rect x="165.0" y="62.0" width="131.0" height="52.0" rx="10" fill="#161b22" stroke="#263140" stroke-width="1"/>
+
+<text x="213" y="95" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#ffffff" font-weight="700" text-anchor="start" font-style="normal">GitHub</text>
+<rect x="308.0" y="62.0" width="131.0" height="52.0" rx="10" fill="#ffa116" stroke="none" stroke-width="1"/>
+
+<text x="356" y="95" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#ffffff" font-weight="700" text-anchor="start" font-style="normal">LeetCode</text>
+<rect x="451.0" y="62.0" width="131.0" height="52.0" rx="10" fill="#D14836" stroke="none" stroke-width="1"/>
+
+<text x="499" y="95" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#ffffff" font-weight="700" text-anchor="start" font-style="normal">Email</text>
+<rect x="602.0" y="62.0" width="376.0" height="96.0" rx="14" fill="#0d141f" stroke="#263140" stroke-width="1.2"/>
+<text x="620" y="88" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#58a6ff" font-weight="400" text-anchor="start" font-style="normal">✉</text>
+<text x="644" y="87" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11.5" fill="#f0f6fc" font-weight="700" text-anchor="start" font-style="normal">ashis2489@gmail.com</text>
+<text x="779.6" y="87" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="10.5" fill="#8b949e" font-weight="400" text-anchor="start" font-style="normal">Drop me an email</text>
+<text x="620" y="114" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#58a6ff" font-weight="400" text-anchor="start" font-style="normal">📍</text>
+<text x="644" y="113" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11.5" fill="#f0f6fc" font-weight="700" text-anchor="start" font-style="normal">India</text>
+<text x="690.0" y="113" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="10.5" fill="#8b949e" font-weight="400" text-anchor="start" font-style="normal">Based in India</text>
+<text x="620" y="140" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#3fb950" font-weight="400" text-anchor="start" font-style="normal">●</text>
+<text x="644" y="139" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11.5" fill="#f0f6fc" font-weight="700" text-anchor="start" font-style="normal">Open to opportunities</text>
+<text x="792.4" y="139" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="10.5" fill="#8b949e" font-weight="400" text-anchor="start" font-style="normal">Let&#x27;s build something great!</text></g>
+</svg>

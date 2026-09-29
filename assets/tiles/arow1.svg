@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="532 1794 468 164" width="468" height="164">
+<style>@keyframes pulse { 0%,100% { opacity: .55; r: 5 } 50% { opacity: 1; r: 6.5 } }</style>
+<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#141132"/><stop offset="0.45" stop-color="#3a2a66"/><stop offset="0.72" stop-color="#7c4680"/><stop offset="0.9" stop-color="#c2657e"/><stop offset="1" stop-color="#e29168"/></linearGradient><linearGradient id="heroG" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#a78bfa"/><stop offset="0.55" stop-color="#7c9cff"/><stop offset="1" stop-color="#22d3ee"/></linearGradient><linearGradient id="fade" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0a0e15" stop-opacity="0.93"/><stop offset="0.6" stop-color="#0a0e15" stop-opacity="0.35"/><stop offset="1" stop-color="#0a0e15" stop-opacity="0.05"/></linearGradient><linearGradient id="btn" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#7c5cff"/><stop offset="1" stop-color="#4d8dff"/></linearGradient><linearGradient id="ring" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a78bfa"/><stop offset="1" stop-color="#22d3ee"/></linearGradient><linearGradient id="qsky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b1638"/><stop offset="1" stop-color="#4b2f6e"/></linearGradient></defs>
+<g transform="translate(0 1732)"><text x="22" y="26" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="17" fill="#c9d1d9" font-weight="400" text-anchor="start" font-style="normal">🏆</text>
+<text x="52" y="26" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="20" fill="#f0f6fc" font-weight="800" text-anchor="start" font-style="normal">Achievements</text>
+<rect x="196.0" y="18.0" width="26.0" height="3.0" rx="1.5" fill="#58a6ff"/>
+<text x="22" y="46" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11.5" fill="#8b949e" font-weight="400" text-anchor="start" font-style="normal">Badges and milestones from GitHub and LeetCode.</text>
+<rect x="22.0" y="62.0" width="956.0" height="148.0" rx="14" fill="#111824" stroke="#263140" stroke-width="1.2"/>
+<path d="M 132.0 76.0 L 170.1 98.0 L 170.1 142.0 L 132.0 164.0 L 93.9 142.0 L 93.9 98.0 Z" fill="#161e2b" stroke="url(#ring)" stroke-width="2.5"/>
+
+<text x="132" y="186" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11.5" fill="#f0f6fc" font-weight="700" text-anchor="middle" font-style="normal">Pull Shark</text>
+<path d="M 292.0 76.0 L 330.1 98.0 L 330.1 142.0 L 292.0 164.0 L 253.9 142.0 L 253.9 98.0 Z" fill="#161e2b" stroke="url(#ring)" stroke-width="2.5"/>
+
+<text x="292" y="186" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11.5" fill="#f0f6fc" font-weight="700" text-anchor="middle" font-style="normal">Quickdraw</text>
+<path d="M 452.0 76.0 L 490.1 98.0 L 490.1 142.0 L 452.0 164.0 L 413.9 142.0 L 413.9 98.0 Z" fill="#161e2b" stroke="url(#ring)" stroke-width="2.5"/>
+
+<text x="452" y="186" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11.5" fill="#f0f6fc" font-weight="700" text-anchor="middle" font-style="normal">Yolo</text>
+<path d="M 612.0 76.0 L 650.1 98.0 L 650.1 142.0 L 612.0 164.0 L 573.9 142.0 L 573.9 98.0 Z" fill="#241d10" stroke="#ffa116" stroke-width="2.5"/>
+<text x="612" y="118" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="26" fill="#ffa116" font-weight="800" text-anchor="middle" font-style="normal">182</text>
+<text x="612" y="138" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#ffe0a8" font-weight="400" text-anchor="middle" font-style="normal">Solved</text>
+<text x="612" y="186" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11.5" fill="#f0f6fc" font-weight="700" text-anchor="middle" font-style="normal">LeetCode</text>
+<rect x="722.0" y="96.0" width="102.8" height="26.0" rx="13.0" fill="#241d10" stroke="#6b4a12" stroke-width="1"/><text x="773.4" y="112.78" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="10.5" fill="#ffd88a" font-weight="600" text-anchor="middle" font-style="normal">Annual Badge</text>
+<rect x="722.0" y="130.0" width="166.8" height="26.0" rx="13.0" fill="#241d10" stroke="#6b4a12" stroke-width="1"/><text x="805.4" y="146.78" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="10.5" fill="#ffd88a" font-weight="600" text-anchor="middle" font-style="normal">Daily Coding Challenge</text>
+<text x="722" y="174" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#8b949e" font-weight="400" text-anchor="start" font-style="italic">Always shipping, always learning.</text>
+<text x="722" y="196" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" fill="#58a6ff" font-weight="600" text-anchor="start" font-style="normal">Star ⭐ the repos if they help you!</text></g>
+</svg>

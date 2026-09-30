@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="774.6 772 68.60000000000002 100" width="68.60000000000002" height="100">
+<style>@keyframes pulse { 0%,100% { opacity: .55; r: 5 } 50% { opacity: 1; r: 6.5 } }</style>
+<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#141132"/><stop offset="0.45" stop-color="#3a2a66"/><stop offset="0.72" stop-color="#7c4680"/><stop offset="0.9" stop-color="#c2657e"/><stop offset="1" stop-color="#e29168"/></linearGradient><linearGradient id="heroG" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#a78bfa"/><stop offset="0.55" stop-color="#7c9cff"/><stop offset="1" stop-color="#22d3ee"/></linearGradient><linearGradient id="fade" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0a0e15" stop-opacity="0.93"/><stop offset="0.6" stop-color="#0a0e15" stop-opacity="0.35"/><stop offset="1" stop-color="#0a0e15" stop-opacity="0.05"/></linearGradient><linearGradient id="btn" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#7c5cff"/><stop offset="1" stop-color="#4d8dff"/></linearGradient><linearGradient id="ring" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a78bfa"/><stop offset="1" stop-color="#22d3ee"/></linearGradient><linearGradient id="qsky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b1638"/><stop offset="1" stop-color="#4b2f6e"/></linearGradient></defs>
+<rect x="774.6" y="772" width="68.60000000000002" height="100" fill="#0a0e15"/>
+<g transform="translate(0 710)"><text x="22" y="26" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="17" fill="#c9d1d9" font-weight="400" text-anchor="start" font-style="normal">&lt;/&gt;</text>
+<text x="52" y="26" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="20" fill="#f0f6fc" font-weight="800" text-anchor="start" font-style="normal">Tech Stack</text>
+<rect x="174.0" y="18.0" width="26.0" height="3.0" rx="1.5" fill="#58a6ff"/>
+<text x="22" y="46" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11.5" fill="#8b949e" font-weight="400" text-anchor="start" font-style="normal">Tools and technologies I work with</text>
+<rect x="904.4" y="10.0" width="65.6" height="26.0" rx="13.0" fill="#0d141f" stroke="#263140" stroke-width="1"/><text x="937.1999999999999" y="26.96" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#8b949e" font-weight="500" text-anchor="middle" font-style="normal">Others</text>
+<rect x="837.4" y="10.0" width="59.0" height="26.0" rx="13.0" fill="#0d141f" stroke="#263140" stroke-width="1"/><text x="866.9" y="26.96" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#8b949e" font-weight="500" text-anchor="middle" font-style="normal">Tools</text>
+<rect x="750.6" y="10.0" width="78.8" height="26.0" rx="13.0" fill="#0d141f" stroke="#263140" stroke-width="1"/><text x="790.0" y="26.96" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#8b949e" font-weight="500" text-anchor="middle" font-style="normal">Database</text>
+<rect x="670.4" y="10.0" width="72.2" height="26.0" rx="13.0" fill="#0d141f" stroke="#263140" stroke-width="1"/><text x="706.5000000000001" y="26.96" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#8b949e" font-weight="500" text-anchor="middle" font-style="normal">Backend</text>
+<rect x="583.6" y="10.0" width="78.8" height="26.0" rx="13.0" fill="#0d141f" stroke="#263140" stroke-width="1"/><text x="623.0000000000001" y="26.96" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#8b949e" font-weight="500" text-anchor="middle" font-style="normal">Frontend</text>
+<rect x="490.2" y="10.0" width="85.4" height="26.0" rx="13.0" fill="#0d141f" stroke="#263140" stroke-width="1"/><text x="532.9000000000002" y="26.96" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#8b949e" font-weight="500" text-anchor="middle" font-style="normal">Languages</text>
+<rect x="436.4" y="10.0" width="45.8" height="26.0" rx="13.0" fill="#1d2b4d" stroke="#2f4f8f" stroke-width="1"/><text x="459.3000000000001" y="26.96" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#9ecbff" font-weight="700" text-anchor="middle" font-style="normal">All</text>
+<rect x="22.0" y="62.0" width="63.6" height="84.0" rx="11" fill="#0d141f" stroke="#263140" stroke-width="1.2"/>
+<rect x="36.8" y="76.0" width="34.0" height="34.0" rx="9" fill="#161e2b" stroke="#263140" stroke-width="1"/>
+
+<text x="53.82142857142857" y="130" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="9.5" fill="#8b949e" font-weight="400" text-anchor="middle" font-style="normal">C++</text>
+<rect x="90.6" y="62.0" width="63.6" height="84.0" rx="11" fill="#0d141f" stroke="#263140" stroke-width="1.2"/>
+<rect x="105.5" y="76.0" width="34.0" height="34.0" rx="9" fill="#161e2b" stroke="#263140" stroke-width="1"/>
+
+<text x="122.46428571428571" y="130" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="9.5" fill="#8b949e" font-weight="400" text-anchor="middle" font-style="normal">JavaScript</text>
+<rect x="159.3" y="62.0" width="63.6" height="84.0" rx="11" fill="#0d141f" stroke="#263140" stroke-width="1.2"/>
+<rect x="174.1" y="76.0" width="34.0" height="34.0" rx="9" fill="#161e2b" stroke="#263140" stroke-width="1"/>
+
+<text x="191.10714285714286" y="130" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="9.5" fill="#8b949e" font-weight="400" text-anchor="middle" font-style="normal">TypeScript</text>
+<rect x="227.9" y="62.0" width="63.6" height="84.0" rx="11" fill="#0d141f" stroke="#263140" stroke-width="1.2"/>
+<rect x="242.8" y="76.0" width="34.0" height="34.0" rx="9" fill="#161e2b" stroke="#263140" stroke-width="1"/>
+
+<text x="259.75" y="130" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="9.5" fill="#8b949e" font-weight="400" text-anchor="middle" font-style="normal">React</text>
+<rect x="296.6" y="62.0" width="63.6" height="84.0" rx="11" fill="#0d141f" stroke="#263140" stroke-width="1.2"/>
+<rect x="311.4" y="76.0" width="34.0" height="34.0" rx="9" fill="#161e2b" stroke="#263140" stroke-width="1"/>
+
+<text x="328.3928571428571" y="130" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="9.5" fill="#8b949e" font-weight="400" text-anchor="middle" font-style="normal">Next.js</text>
+<rect x="365.2" y="62.0" width="63.6" height="84.0" rx="11" fill="#0d141f" stroke="#263140" stroke-width="1.2"/>
+<rect x="380.0" y="76.0" width="34.0" height="34.0" rx="9" fill="#161e2b" stroke="#263140" stroke-width="1"/>
+
+<text x="397.0357142857142" y="130" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="9.5" fill="#8b949e" font-weight="400" text-anchor="middle" font-style="normal">Node.js</text>
+<rect x="433.9" y="62.0" width="63.6" height="84.0" rx="11" fill="#0d141f" stroke="#263140" stroke-width="1.2"/>
+<rect x="448.7" y="76.0" width="34.0" height="34.0" rx="9" fill="#161e2b" stroke="#263140" stroke-width="1"/>
+
+<text x="465.6785714285714" y="130" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="9.5" fill="#8b949e" font-weight="400" text-anchor="middle" font-style="normal">Express</text>
+<rect x="502.5" y="62.0" width="63.6" height="84.0" rx="11" fill="#0d141f" stroke="#263140" stroke-width="1.2"/>
+<rect x="517.3" y="76.0" width="34.0" height="34.0" rx="9" fill="#161e2b" stroke="#263140" stroke-width="1"/>
+
+<text x="534.3214285714286" y="130" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="9.5" fill="#8b949e" font-weight="400" text-anchor="middle" font-style="normal">MongoDB</text>
+<rect x="571.1" y="62.0" width="63.6" height="84.0" rx="11" fill="#0d141f" stroke="#263140" stroke-width="1.2"/>
+<rect x="586.0" y="76.0" width="34.0" height="34.0" rx="9" fill="#161e2b" stroke="#263140" stroke-width="1"/>
+
+<text x="602.9642857142857" y="130" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="9.5" fill="#8b949e" font-weight="400" text-anchor="middle" font-style="normal">Postgres</text>
+<rect x="639.8" y="62.0" width="63.6" height="84.0" rx="11" fill="#0d141f" stroke="#263140" stroke-width="1.2"/>
+<rect x="654.6" y="76.0" width="34.0" height="34.0" rx="9" fill="#161e2b" stroke="#263140" stroke-width="1"/>
+
+<text x="671.6071428571428" y="130" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="9.5" fill="#8b949e" font-weight="400" text-anchor="middle" font-style="normal">Prisma</text>
+<rect x="708.4" y="62.0" width="63.6" height="84.0" rx="11" fill="#0d141f" stroke="#263140" stroke-width="1.2"/>
+<rect x="723.2" y="76.0" width="34.0" height="34.0" rx="9" fill="#161e2b" stroke="#263140" stroke-width="1"/>
+
+<text x="740.2499999999999" y="130" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="9.5" fill="#8b949e" font-weight="400" text-anchor="middle" font-style="normal">Docker</text>
+<rect x="777.1" y="62.0" width="63.6" height="84.0" rx="11" fill="#0d141f" stroke="#263140" stroke-width="1.2"/>
+<rect x="791.9" y="76.0" width="34.0" height="34.0" rx="9" fill="#161e2b" stroke="#263140" stroke-width="1"/>
+<image href="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjRjA1MDMyIiByb2xlPSJpbWciIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+R2l0PC90aXRsZT48cGF0aCBkPSJNMTMuMDkgMjMuNTQ5YTEuNTQgMS41NCAwIDAgMS0yLjE4IDBMLjQ1MSAxMy4wODlhMS41NCAxLjU0IDAgMCAxIDAtMi4xNzlsNy4xOTEtNy4xOSAyLjczMyAyLjczM2ExLjg1IDEuODUgMCAwIDAgLjk2NCAyLjMyNnY2LjY2YTEuODQ5IDEuODQ5IDAgMSAwIDEuNTQgMFY4Ljk1N2wyLjUwOCAyLjUwOGExLjg1IDEuODUgMCAxIDAgMS4wOS0xLjA5bC0yLjYzNC0yLjYzNGExLjg1IDEuODUgMCAwIDAtMi4zNzgtMi4zNzdMOC43MyAyLjYzIDEwLjkxLjQ1MWExLjU0IDEuNTQgMCAwIDEgMi4xNzkgMGwxMC40NTkgMTAuNDZhMS41NCAxLjU0IDAgMCAxIDAgMi4xNzl6Ii8+PC9zdmc+" x="797.9" y="82.0" width="22" height="22"/>
+<text x="808.8928571428571" y="130" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="9.5" fill="#8b949e" font-weight="400" text-anchor="middle" font-style="normal">Git</text>
+<rect x="845.7" y="62.0" width="63.6" height="84.0" rx="11" fill="#0d141f" stroke="#263140" stroke-width="1.2"/>
+<rect x="860.5" y="76.0" width="34.0" height="34.0" rx="9" fill="#161e2b" stroke="#263140" stroke-width="1"/>
+
+<text x="877.5357142857142" y="130" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="9.5" fill="#8b949e" font-weight="400" text-anchor="middle" font-style="normal">Tailwind</text>
+<rect x="914.4" y="62.0" width="63.6" height="84.0" rx="11" fill="#0d141f" stroke="#263140" stroke-width="1.2"/>
+<rect x="929.2" y="76.0" width="34.0" height="34.0" rx="9" fill="#161e2b" stroke="#263140" stroke-width="1"/>
+
+<text x="946.1785714285713" y="130" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="9.5" fill="#8b949e" font-weight="400" text-anchor="middle" font-style="normal">Vercel</text></g>
+</svg>

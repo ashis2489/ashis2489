@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="590 508 409.5 202" width="409.5" height="202">
+<style>@keyframes pulse { 0%,100% { opacity: .55; r: 5 } 50% { opacity: 1; r: 6.5 } }</style>
+<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#141132"/><stop offset="0.45" stop-color="#3a2a66"/><stop offset="0.72" stop-color="#7c4680"/><stop offset="0.9" stop-color="#c2657e"/><stop offset="1" stop-color="#e29168"/></linearGradient><linearGradient id="heroG" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#a78bfa"/><stop offset="0.55" stop-color="#7c9cff"/><stop offset="1" stop-color="#22d3ee"/></linearGradient><linearGradient id="fade" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0a0e15" stop-opacity="0.93"/><stop offset="0.6" stop-color="#0a0e15" stop-opacity="0.35"/><stop offset="1" stop-color="#0a0e15" stop-opacity="0.05"/></linearGradient><linearGradient id="btn" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#7c5cff"/><stop offset="1" stop-color="#4d8dff"/></linearGradient><linearGradient id="ring" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a78bfa"/><stop offset="1" stop-color="#22d3ee"/></linearGradient><linearGradient id="qsky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b1638"/><stop offset="1" stop-color="#4b2f6e"/></linearGradient></defs>
+<rect x="590" y="508" width="410" height="202" fill="#0a0e15"/>
+<g transform="translate(0 460)"><text x="22" y="26" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="17" fill="#c9d1d9" font-weight="400" text-anchor="start" font-style="normal">👤</text>
+<text x="52" y="26" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="20" fill="#f0f6fc" font-weight="800" text-anchor="start" font-style="normal">About Me</text>
+<rect x="152.0" y="18.0" width="26.0" height="3.0" rx="1.5" fill="#58a6ff"/>
+<rect x="22.0" y="48.0" width="560.0" height="190.0" rx="14" fill="#111824" stroke="#263140" stroke-width="1.2"/>
+<clipPath id="avclip"><circle cx="112" cy="128" r="50"/></clipPath>
+<circle cx="112" cy="128" r="54" fill="none" stroke="url(#ring)" stroke-width="3"/>
+
+<rect x="72.0" y="190.0" width="82.0" height="24.0" rx="12.0" fill="#0e1c14" stroke="#1e4d2f" stroke-width="1"/><text x="120.0" y="205.78" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="10.5" fill="#7ee2a8" font-weight="500" text-anchor="middle" font-style="normal">Online</text><circle cx="88" cy="202.0" r="5" fill="#3fb950" style="animation: pulse 1.8s ease-in-out infinite"/>
+<text x="192" y="90" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" fill="#c9d1d9" font-weight="400" text-anchor="start" font-style="normal">I&#x27;m a full-stack web developer from India, passionate</text>
+<text x="192" y="108" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" fill="#c9d1d9" font-weight="400" text-anchor="start" font-style="normal">about building impactful products, solving real-world</text>
+<text x="192" y="126" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" fill="#c9d1d9" font-weight="400" text-anchor="start" font-style="normal">problems and continuous learning. I love full-stack</text>
+<text x="192" y="144" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" fill="#c9d1d9" font-weight="400" text-anchor="start" font-style="normal">development, exploring new technologies and turning</text>
+<text x="192" y="162" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" fill="#c9d1d9" font-weight="400" text-anchor="start" font-style="normal">ideas into scalable web applications.</text>
+<rect x="192.0" y="196.0" width="62.0" height="26.0" rx="13.0" fill="#0d141f" stroke="#263140" stroke-width="1"/><text x="223.0" y="212.78" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="10.5" fill="#c9d1d9" font-weight="500" text-anchor="middle" font-style="normal">🇮🇳 India</text>
+<rect x="262.0" y="196.0" width="92.0" height="26.0" rx="13.0" fill="#0d141f" stroke="#263140" stroke-width="1"/><text x="308.0" y="212.78" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="10.5" fill="#c9d1d9" font-weight="500" text-anchor="middle" font-style="normal">⚡ Open Source</text>
+<rect x="362.0" y="196.0" width="148.0" height="26.0" rx="13.0" fill="#0d141f" stroke="#263140" stroke-width="1"/><text x="436.0" y="212.78" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="10.5" fill="#c9d1d9" font-weight="500" text-anchor="middle" font-style="normal">● Open to Opportunities</text>
+<rect x="598.0" y="48.0" width="380.0" height="190.0" rx="14" fill="#111824" stroke="#263140" stroke-width="1.2"/>
+<rect x="599.0" y="49.0" width="378.0" height="34.0" rx="13" fill="#0b111c"/>
+<path d="M 599 82 L 977 82" stroke="#263140"/>
+<circle cx="616" cy="66" r="5" fill="#ff5f56"/>
+<circle cx="632" cy="66" r="5" fill="#ffbd2e"/>
+<circle cx="648" cy="66" r="5" fill="#27c93f"/>
+<text x="682" y="70" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#f0f6fc" font-weight="700" text-anchor="start" font-style="normal">About</text>
+<rect x="682.0" y="79.0" width="33.0" height="3.0" rx="1.5" fill="#58a6ff"/>
+<text x="733.0" y="70" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#8b949e" font-weight="500" text-anchor="start" font-style="normal">Education</text>
+<text x="810.4" y="70" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" fill="#8b949e" font-weight="500" text-anchor="start" font-style="normal">Interests</text>
+<text x="616" y="104" font-family="'Cascadia Code', 'Fira Code', Consolas, monospace" font-size="10" fill="#4b5563" font-weight="400" text-anchor="end" font-style="normal">1</text>
+<text x="630" y="104" font-family="'Cascadia Code', 'Fira Code', Consolas, monospace" font-size="10.5"><tspan fill="#ff7b72">const </tspan><tspan fill="#79c0ff">ashish</tspan><tspan fill="#c9d1d9"> = {</tspan></text>
+<text x="616" y="120" font-family="'Cascadia Code', 'Fira Code', Consolas, monospace" font-size="10" fill="#4b5563" font-weight="400" text-anchor="end" font-style="normal">2</text>
+<text x="630" y="120" font-family="'Cascadia Code', 'Fira Code', Consolas, monospace" font-size="10.5"><tspan fill="#d2a8ff">  role</tspan><tspan fill="#c9d1d9">: </tspan><tspan fill="#a5d6ff">&quot;Full-Stack Developer&quot;</tspan><tspan fill="#c9d1d9">,</tspan></text>
+<text x="616" y="136" font-family="'Cascadia Code', 'Fira Code', Consolas, monospace" font-size="10" fill="#4b5563" font-weight="400" text-anchor="end" font-style="normal">3</text>
+<text x="630" y="136" font-family="'Cascadia Code', 'Fira Code', Consolas, monospace" font-size="10.5"><tspan fill="#d2a8ff">  location</tspan><tspan fill="#c9d1d9">: </tspan><tspan fill="#a5d6ff">&quot;India&quot;</tspan><tspan fill="#c9d1d9">,</tspan></text>
+<text x="616" y="152" font-family="'Cascadia Code', 'Fira Code', Consolas, monospace" font-size="10" fill="#4b5563" font-weight="400" text-anchor="end" font-style="normal">4</text>
+<text x="630" y="152" font-family="'Cascadia Code', 'Fira Code', Consolas, monospace" font-size="10.5"><tspan fill="#d2a8ff">  leetcode</tspan><tspan fill="#c9d1d9">: </tspan><tspan fill="#a5d6ff">&quot;182 problems solved&quot;</tspan><tspan fill="#c9d1d9">,</tspan></text>
+<text x="616" y="168" font-family="'Cascadia Code', 'Fira Code', Consolas, monospace" font-size="10" fill="#4b5563" font-weight="400" text-anchor="end" font-style="normal">5</text>
+<text x="630" y="168" font-family="'Cascadia Code', 'Fira Code', Consolas, monospace" font-size="10.5"><tspan fill="#d2a8ff">  interests</tspan><tspan fill="#c9d1d9">: [</tspan><tspan fill="#a5d6ff">&quot;Web Dev&quot;, &quot;UI/UX&quot;</tspan><tspan fill="#c9d1d9">],</tspan></text>
+<text x="616" y="184" font-family="'Cascadia Code', 'Fira Code', Consolas, monospace" font-size="10" fill="#4b5563" font-weight="400" text-anchor="end" font-style="normal">6</text>
+<text x="630" y="184" font-family="'Cascadia Code', 'Fira Code', Consolas, monospace" font-size="10.5"><tspan fill="#d2a8ff">  currently</tspan><tspan fill="#c9d1d9">: </tspan><tspan fill="#a5d6ff">&quot;Building real projects&quot;</tspan><tspan fill="#c9d1d9">,</tspan></text>
+<text x="616" y="200" font-family="'Cascadia Code', 'Fira Code', Consolas, monospace" font-size="10" fill="#4b5563" font-weight="400" text-anchor="end" font-style="normal">7</text>
+<text x="630" y="200" font-family="'Cascadia Code', 'Fira Code', Consolas, monospace" font-size="10.5"><tspan fill="#d2a8ff">  goal</tspan><tspan fill="#c9d1d9">: </tspan><tspan fill="#a5d6ff">&quot;Create impactful products&quot;</tspan><tspan fill="#c9d1d9">,</tspan></text>
+<text x="616" y="216" font-family="'Cascadia Code', 'Fira Code', Consolas, monospace" font-size="10" fill="#4b5563" font-weight="400" text-anchor="end" font-style="normal">8</text>
+<text x="630" y="216" font-family="'Cascadia Code', 'Fira Code', Consolas, monospace" font-size="10.5"><tspan fill="#c9d1d9">};</tspan></text></g>
+</svg>

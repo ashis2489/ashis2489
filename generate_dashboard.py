@@ -8,6 +8,7 @@ import random
 import re
 import subprocess
 import urllib.request
+from urllib.parse import quote
 
 OWNER = "ashis2489"
 LC_USER = "2301301008"
@@ -914,6 +915,9 @@ def main():
     css = "@keyframes pulse { 0%,100% { opacity: .55; r: 5 } 50% { opacity: 1; r: 6.5 } }"
     PAGE_SVG.write_text(svg_doc(W, total, "\n".join(parts), css), encoding="utf-8")
 
+    tech_terms = ["C++", "JavaScript", "TypeScript", "React", "Next.js", "Node.js",
+                  "Express", "MongoDB", "Postgres", "Prisma", "Docker", "Git",
+                  "Tailwind", "Vercel"]
     links = {
         "profile": f"https://github.com/{OWNER}",
         "search": f"https://github.com/search?q=user%3A{OWNER}&type=repositories",
@@ -927,6 +931,8 @@ def main():
         "priv": f"https://github.com/{OWNER}/priv",
         "commits": f"https://github.com/search?q=author%3A{OWNER}&type=commits",
         "mailto": "mailto:ashis2489@gmail.com",
+        "contributions": f"https://github.com/users/{OWNER}/contributions",
+        "achievements": f"https://github.com/{OWNER}?tab=achievements",
     }
     alts = {
         "profile": "Ashish on GitHub", "search": "Search Ashish's repositories",
@@ -935,54 +941,83 @@ def main():
         "work": "Employee Management repo", "badges": "GitHub Badges repo",
         "priv": "Portfolio repo", "commits": "Ashish's commits",
         "mailto": "Email Ashish",
+        "contributions": "GitHub contribution graph",
+        "achievements": "GitHub achievements",
     }
+    for i, t in enumerate(tech_terms):
+        links[f"tech{i}"] = (f"https://github.com/search?q=user%3A{OWNER}"
+                             f"+{quote(t)}&type=repositories")
+        alts[f"tech{i}"] = f"{t} repositories"
+    tech_x = [0, 88.1, 156.8, 225.4, 294.1, 362.7, 431.4, 500, 568.6, 637.3,
+              705.9, 774.6, 843.2, 911.9, 1000]
+    tech_slices = [(tech_x[i], tech_x[i + 1], f"tech{i}") for i in range(14)]
     rows = [
-        ("nav", "nav", 0, 54, [(0, 716, "profile"), (716, 876, "search"),
-                               (876, 919, "gh"), (919, 1000, "li")]),
-        ("hero", "hero", 0, 330, [(0, 1000, "profile")]),
-        ("strip", "strip", 0, 76, [(0, 261, "profile"), (261, 500, "repos"),
+        ("nav", "nav", 0, 54, [(0, 152, "profile"), (152, 199.2, "profile"),
+                               (199.2, 253.2, "li"), (253.2, 327.6, "repos"),
+                               (327.6, 388.4, "repos"), (388.4, 442.4, "contributions"),
+                               (442.4, 544, "achievements"), (544, 716, "mailto"),
+                               (716, 876, "search"), (876, 919, "gh"), (919, 1000, "li")]),
+        ("heroA", "hero", 0, 232, [(0, 1000, "profile")]),
+        ("heroB", "hero", 232, 330, [(0, 210, "repos"), (210, 370, "profile"),
+                                     (370, 540, "li"), (540, 1000, "profile")]),
+        ("strip", "strip", 0, 76, [(0, 261, "contributions"), (261, 500, "repos"),
                                    (500, 739, "repos"), (739, 1000, "leetcode")]),
-        ("about", "about", 0, 250, [(0, 1000, None)]),
-        ("tech", "tech", 0, 162, [(0, 1000, None)]),
-        ("phead", "projects", 0, 62, [(0, 828, None), (828, 1000, "repos")]),
+        ("aboutA", "about", 0, 48, [(0, 1000, "li")]),
+        ("aboutB", "about", 48, 250, [(0, 590, "li"), (590, 1000, "repos")]),
+        ("techA", "tech", 0, 62, [(0, 1000, "repos")]),
+        ("techB", "tech", 62, 162, tech_slices),
+        ("phead", "projects", 0, 62, [(0, 1000, "repos")]),
         ("prow1", "projects", 62, 306, [(0, 338.3, "teen"), (338.3, 661.7, "work"),
                                         (661.7, 1000, "badges")]),
         ("prow2", "projects", 306, 582, [(0, 338.3, "priv"), (338.3, 661.7, "repos"),
                                          (661.7, 1000, "badges")]),
-        ("shead", "stats", 0, 62, [(0, 1000, None)]),
-        ("srow", "stats", 62, 278, [(0, 530, "profile"), (530, 722, "commits"),
+        ("shead", "stats", 0, 62, [(0, 1000, "contributions")]),
+        ("srow", "stats", 62, 278, [(0, 530, "contributions"), (530, 722, "commits"),
                                     (722, 1000, "leetcode")]),
-        ("ahead", "achievements", 0, 62, [(0, 1000, None)]),
-        ("arow", "achievements", 62, 226, [(0, 532, "profile"), (532, 1000, "leetcode")]),
-        ("journey", "journey", 0, 322, [(0, 1000, None)]),
-        ("chead", "connect", 0, 62, [(0, 1000, None)]),
+        ("ahead", "achievements", 0, 62, [(0, 1000, "achievements")]),
+        ("arow", "achievements", 62, 226, [(0, 532, "achievements"),
+                                           (532, 686, "leetcode"),
+                                           (686, 1000, "achievements")]),
+        ("journey", "journey", 0, 322, [(0, 1000, "li")]),
+        ("chead", "connect", 0, 62, [(0, 1000, "li")]),
         ("crow", "connect", 62, 174, [(0, 159, "li"), (159, 302, "gh"),
                                       (302, 445, "leetcode"), (445, 1000, "mailto")]),
-        ("footer", "footer", 0, 64, [(0, 1000, "profile")]),
+        ("footer", "footer", 0, 64, [(0, 290, "profile"), (290, 333.6, "profile"),
+                                     (333.6, 383.6, "li"), (383.6, 452.8, "repos"),
+                                     (452.8, 509.2, "repos"), (509.2, 559.2, "contributions"),
+                                     (559.2, 654, "achievements"), (654, 740, "mailto"),
+                                     (740, 1000, "profile")]),
     ]
     tiles_dir = OUT / "tiles"
     tiles_dir.mkdir(exist_ok=True)
+    for old in tiles_dir.glob("*.svg"):
+        old.unlink()
     img_re = re.compile(r'<image [^>]* x="(-?[\d.]+)" y="(-?[\d.]+)"[^>]*/>')
     body_by_sec = {n: b for n, (h, b) in sections}
     html_lines = ['<div align="center">']
     n_tiles = 0
     for rname, sec, ly0, ly1, slices in rows:
         hgt = ly1 - ly0
+        assert abs(sum(x1 - x0 for x0, x1, _ in slices) - 1000) < 1e-6, rname
         y0 = off[sec] + ly0
         body = body_by_sec[sec]
         defs = "" if 'id="sky"' in body else scene_defs()
         seg = []
         for i, (x0, x1, key) in enumerate(slices):
             pct = (x1 - x0) / 10
+            vb_w = x1 - x0
             if len(slices) > 1 and i == len(slices) - 1:
                 pct -= 0.05
+                vb_w = round(pct * 10, 4)
             filt = lambda m: (m.group(0)
                               if x0 - 8 <= float(m.group(1)) <= x1 + 8
                               and ly0 - 8 <= float(m.group(2)) <= ly1 + 8 else "")
             svg = (f'<svg xmlns="http://www.w3.org/2000/svg" '
-                   f'viewBox="{x0} {y0} {x1 - x0} {hgt}" '
-                   f'width="{x1 - x0}" height="{hgt}">\n'
+                   f'viewBox="{x0} {y0} {vb_w} {hgt}" '
+                   f'width="{vb_w}" height="{hgt}">\n'
                    f'<style>{css}</style>\n{defs}\n'
+                   f'<rect x="{x0}" y="{y0}" width="{x1 - x0}" height="{hgt}" '
+                   f'fill="{PAGE}"/>\n'
                    f'<g transform="translate(0 {off[sec]})">'
                    f'{img_re.sub(filt, body)}</g>\n</svg>\n')
             fn = f"{rname}{i}.svg"
